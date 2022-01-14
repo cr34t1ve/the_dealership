@@ -82,7 +82,8 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color:
-                              isDarkMode ? Colors.white : const Color(0xff3b22a1),
+
+                              isDarkMode ? Colors.white : Colors.black,
                           fontSize: size.width * 0.05,
                           fontWeight: FontWeight.bold,
                         ),
@@ -93,7 +94,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                         color:
-                            isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                            isDarkMode ? Colors.white : Colors.black,
                         fontSize: size.width * 0.03,
                         fontWeight: FontWeight.bold,
                       ),
@@ -105,7 +106,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                           style: GoogleFonts.poppins(
                             color: isDarkMode
                                 ? Colors.white
-                                : const Color(0xff3b22a1),
+                                : Colors.lightBlue,
                             fontSize: size.width * 0.06,
                             fontWeight: FontWeight.bold,
                           ),
@@ -130,7 +131,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                             width: size.width * 0.1,
                             child: Container(
                               decoration: const BoxDecoration(
-                                color: Color(0xff3b22a1),
+                                color: Colors.lightBlue,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(
                                     10,

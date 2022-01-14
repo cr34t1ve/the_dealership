@@ -13,7 +13,7 @@ List<Map> cars = [
     'carRating': '5.0',
   },
   {
-    'carName': 'Volkswagen Golf EVO 2020',
+    'carName': 'Volkswagen Golf ',
     'carClass': 'Economy',
     'carPower': 150,
     'people': '1-5',
@@ -24,7 +24,8 @@ List<Map> cars = [
     'carRating': '4.2',
   },
   {
-    'carName': 'Toyota Yaris COMFORT 2020',
+    'carName': 'Toyota Yaris \n'
+        'COMFORT',
     'carClass': 'City',
     'carPower': 72,
     'people': '1-4',

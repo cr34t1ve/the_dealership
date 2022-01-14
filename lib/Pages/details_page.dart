@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,7 +74,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                   child: Icon(
                     UniconsLine.multiply,
-                    color: isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                    color: isDarkMode ? Colors.white : Colors.black,
                     size: size.height * 0.025,
                   ),
                 ),
@@ -170,41 +171,46 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            widget.carName,
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontSize: size.width * 0.05,
-                              fontWeight: FontWeight.bold,
+                      SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Row(
+                          children: [
+                            SingleChildScrollView(
+                              child: Text(
+                                widget.carName,
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.poppins(
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: size.width * 0.05,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            '${widget.carPrice}\$',
-                            style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontSize: size.width * 0.04,
-                              fontWeight: FontWeight.bold,
+                            const Spacer(),
+                            Text(
+                              '${widget.carPrice}\$',
+                              style: GoogleFonts.poppins(
+                                color: isDarkMode
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontSize: size.width * 0.04,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '/per day',
-                            style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white.withOpacity(0.8)
-                                  : Colors.black.withOpacity(0.8),
-                              fontSize: size.width * 0.025,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              '/per day',
+                              style: GoogleFonts.poppins(
+                                color: isDarkMode
+                                    ? Colors.white.withOpacity(0.8)
+                                    : Colors.black.withOpacity(0.8),
+                                fontSize: size.width * 0.025,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -269,6 +275,8 @@ class _DetailsPageState extends State<DetailsPage> {
                               ),
                             ),
                             child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              physics: const NeverScrollableScrollPhysics(),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:the_dealership/data/cars.dart';
 
 import 'car.dart';
@@ -8,7 +9,11 @@ import 'category.dart';
 Widget buildMostRented(Size size, bool isDarkMode) {
   return Column(
     children: [
-      buildCategory('Most Rented', size, isDarkMode),
+      Text('Most Rented',
+          style:GoogleFonts.poppins(
+        color: isDarkMode ? Colors.white : Colors.black,
+        fontSize: size.width * 0.06,
+        fontWeight: FontWeight.bold,)),
       Padding(
         padding: EdgeInsets.only(
           top: size.height * 0.015,
