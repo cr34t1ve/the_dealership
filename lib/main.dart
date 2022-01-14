@@ -9,6 +9,9 @@ void main() async {
 }
 
 class App extends StatefulWidget {
+
+  static final ValueNotifier<ThemeMode> themeNotifier =
+  ValueNotifier(ThemeMode.light);
   const App({Key? key}) : super(key: key);
   @override
   _AppState createState() => _AppState();
@@ -17,9 +20,12 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      defaultTransition: Transition.rightToLeft,
-      transitionDuration: Duration(milliseconds: 500),
+    return GetMaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      // defaultTransition: Transition.rightToLeft,
+      // transitionDuration: Duration(milliseconds: 500),
+      themeMode:ThemeMode.system ,
       debugShowCheckedModeBanner: false,
       title: 'Car Rental App',
       home: HomePage(),

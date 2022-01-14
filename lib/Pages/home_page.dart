@@ -63,13 +63,17 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
-          title: Image.asset(
-            isDarkMode
-                ? 'assets/icons/SobGOGlight.png'
-                : 'assets/icons/SobGOGdark.png', //logo
-            height: size.height * 0.06,
-            width: size.width * 0.35,
-          ),
+          title: const Text(
+
+              "THE DEALERSHIP",style: TextStyle(fontSize:20,color: Colors.black),),
+
+          // Image.asset(
+          //   isDarkMode
+          //       ? 'assets/icons/SobGOGlight.png'
+          //       : 'assets/icons/SobGOGdark.png', //logo
+          //   height: size.height * 0.06,
+          //   width: size.width * 0.35,
+          // ),
           centerTitle: true,
           actions: <Widget>[
             Padding(
@@ -137,12 +141,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Align(
                             child: Text(
-                              'With Corporate Difference',
+                              "Rid With Us",
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 color: isDarkMode
                                     ? Colors.white
-                                    : const Color(0xff3b22a1),
+                                    : Colors.black,
                                 fontSize: size.width * 0.06,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -160,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                               style: GoogleFonts.poppins(
                                 color: isDarkMode
                                     ? Colors.white
-                                    : const Color(0xff3b22a1),
+                                    : Colors.black,
                                 fontSize: size.width * 0.035,
                               ),
                             ),
