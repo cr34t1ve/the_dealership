@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:the_dealership/widgets/bottom_nav_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:the_dealership/widgets/homePage/top_brands.dart';
 import 'package:unicons/unicons.dart';
@@ -29,9 +29,9 @@ class _HomePageState extends State<HomePage> {
           bottomOpacity: 0.0,
           elevation: 0.0,
           shadowColor: Colors.transparent,
-          backgroundColor: isDarkMode
-              ? const Color(0xff06090d)
-              : const Color(0xfff8f8f8), //appbar bg color
+          backgroundColor:
+              isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+          //appbar bg color
           leading: Padding(
             padding: EdgeInsets.only(
               left: size.width * 0.05,
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                   UniconsLine.bars,
                   color: isDarkMode
                       ? Colors.white
-                      : const Color(0xff3b22a1), //icon bg color
+                      : Colors.black, //icon bg color
                   size: size.height * 0.025,
                 ),
               ),
@@ -63,9 +63,12 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
-          title: const Text(
-
-              "THE DEALERSHIP",style: TextStyle(fontSize:20,color: Colors.black),),
+          title: Text("DEALERSHIP",
+              style: GoogleFonts.poppins(
+                color: isDarkMode ? Colors.white : Colors.black,
+                fontSize: size.width * 0.06,
+                fontWeight: FontWeight.bold,
+              )),
 
           // Image.asset(
           //   isDarkMode
@@ -93,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   child: Icon(
-                    UniconsLine.search,
-                    color: isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                    UniconsLine.toggle_on,
+                    color: isDarkMode ? Colors.white : Colors.black,
                     size: size.height * 0.025,
                   ),
                 ),
@@ -141,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Align(
                             child: Text(
-                              "Rid With Us",
+                              'With Corporate Difference',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 color: isDarkMode
@@ -159,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Align(
                             child: Text(
-                              'Enjoy the fun driving in Enterprise',
+                              'Enjoy Driving In Style',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 color: isDarkMode
@@ -220,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                                         10,
                                       ),
                                     ),
-                                    color: Color(0xff3b22a1), //filters bg color
+                                    color: Colors.black, //filters bg color
                                   ),
                                   child: Icon(
                                     UniconsLine.sliders_v,
@@ -236,8 +239,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                buildTopBrands(size, isDarkMode),
+               // buildTopBrands(size, isDarkMode),
                 buildMostRented(size, isDarkMode),
+                buildFleets(size, isDarkMode),
               ],
             ),
           ),

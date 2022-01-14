@@ -16,7 +16,7 @@ Widget buildBottomNavBar(int currIndex, Size size, bool isDarkMode) {
     backgroundColor: const Color(0x00ffffff),
     type: BottomNavigationBarType.fixed,
     selectedItemColor: isDarkMode ? Colors.indigoAccent : Colors.black,
-    unselectedItemColor: const Color(0xff3b22a1),
+    unselectedItemColor: Colors.black,
     onTap: (value) {
       if (value != currIndex) {
         if (value == 1) {
