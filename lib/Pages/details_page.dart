@@ -83,13 +83,20 @@ class _DetailsPageState extends State<DetailsPage> {
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
-          title: Image.asset(
-            isDarkMode
-                ? 'assets/icons/SobGOGlight.png'
-                : 'assets/icons/SobGOGdark.png',
-            height: size.height * 0.06,
-            width: size.width * 0.35,
-          ),
+           title: Text("DEALERSHIP",
+               style: GoogleFonts.poppins(
+                 color: isDarkMode ? Colors.white : Colors.black,
+                 fontSize: size.width * 0.06,
+                 fontWeight: FontWeight.bold,
+               )),
+          //
+          // Image.asset(
+          //   isDarkMode
+          //       ? 'assets/icons/SobGOGlight.png'
+          //       : 'assets/icons/SobGOGdark.png',
+          //   height: size.height * 0.06,
+          //   width: size.width * 0.35,
+          // ),
           centerTitle: true,
         ),
       ),
@@ -141,7 +148,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             style: GoogleFonts.poppins(
                               color: isDarkMode
                                   ? Colors.white
-                                  : const Color(0xff3b22a1),
+                                  : Colors.black,
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
@@ -171,7 +178,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             style: GoogleFonts.poppins(
                               color: isDarkMode
                                   ? Colors.white
-                                  : const Color(0xff3b22a1),
+                                  : Colors.black,
                               fontSize: size.width * 0.05,
                               fontWeight: FontWeight.bold,
                             ),
@@ -182,7 +189,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             style: GoogleFonts.poppins(
                               color: isDarkMode
                                   ? Colors.white
-                                  : const Color(0xff3b22a1),
+                                  : Colors.black,
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
@@ -208,6 +215,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           children: [
                             buildStat(
                               UniconsLine.dashboard,
+
                               '${widget.carPower} KM',
                               'Power',
                               size,
@@ -235,11 +243,11 @@ class _DetailsPageState extends State<DetailsPage> {
                           vertical: size.height * 0.03,
                         ),
                         child: Text(
-                          'Select Location',
+                          'Current Location',
                           style: GoogleFonts.poppins(
                             color: isDarkMode
                                 ? Colors.white
-                                : const Color(0xff3b22a1),
+                                : Colors.black,
                             fontSize: size.width * 0.055,
                             fontWeight: FontWeight.bold,
                           ),
@@ -260,75 +268,77 @@ class _DetailsPageState extends State<DetailsPage> {
                                 ),
                               ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: size.width * 0.05,
-                                    vertical: size.height * 0.015,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        UniconsLine.map_marker,
-                                        color: const Color(0xff3b22a1),
-                                        size: size.height * 0.05,
-                                      ),
-                                      Text(
-                                        'Katowice Airport',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
-                                          color: isDarkMode
-                                              ? Colors.white
-                                              : const Color(0xff3b22a1),
-                                          fontSize: size.width * 0.05,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Wolności 90, 42-625 Pyrzowice',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
-                                          color: isDarkMode
-                                              ? Colors.white.withOpacity(0.7)
-                                              : Colors.black.withOpacity(0.7),
-                                          fontSize: size.width * 0.032,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: size.height * 0.15,
-                                  width: size.width * 0.25,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                          10,
-                                        ),
-                                      ),
+                            child: SingleChildScrollView(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * 0.05,
+                                      vertical: size.height * 0.015,
                                     ),
-                                    child: Align(
-                                      child: Text(
-                                        'Map Preview',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize: size.width * 0.04,
-                                          fontWeight: FontWeight.bold,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          UniconsLine.map_marker,
+                                          color: isDarkMode ? Colors.white : Colors.black,
+                                          size: size.height * 0.05,
                                         ),
-                                      ),
+                                        Text(
+                                          'Katowice Airport',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                            color: isDarkMode
+                                                ? Colors.white
+                                                :  Colors.black,
+                                            fontSize: size.width * 0.05,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Wolności 90, 42-625 Pyrzowice',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                            color: isDarkMode
+                                                ? Colors.white.withOpacity(0.7)
+                                                : Colors.black.withOpacity(0.7),
+                                            fontSize: size.width * 0.032,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(
+                                    height: size.height * 0.15,
+                                    width: size.width * 0.25,
+                                    // child: Container(
+                                    //   decoration: const BoxDecoration(
+                                    //     color: Colors.black,
+                                    //     borderRadius: BorderRadius.all(
+                                    //       Radius.circular(
+                                    //         10,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    //   child: Align(
+                                    //     child: Text(
+                                    //       'Map Preview',
+                                    //       textAlign: TextAlign.center,
+                                    //       style: GoogleFonts.poppins(
+                                    //         color: Colors.white,
+                                    //         fontSize: size.width * 0.04,
+                                    //         fontWeight: FontWeight.bold,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -425,7 +435,7 @@ Align buildSelectButton(Size size, bool isDarkMode) {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: const Color(0xff3b22a1),
+              color:  isDarkMode ? Colors.white : Colors.black,
             ),
             child: Align(
               child: Text(
@@ -434,7 +444,7 @@ Align buildSelectButton(Size size, bool isDarkMode) {
                 style: GoogleFonts.lato(
                   fontSize: size.height * 0.025,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color:  isDarkMode ? Colors.black : Colors.white,
                 ),
               ),
             ),

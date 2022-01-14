@@ -8,7 +8,7 @@ import 'category.dart';
 Widget buildFleets(Size size, bool isDarkMode) {
   return Column(
     children: [
-      buildCategory('Most Rented', size, isDarkMode),
+      buildCategory('Fleets', size, isDarkMode),
       Padding(
         padding: EdgeInsets.only(
           top: size.height * 0.015,
