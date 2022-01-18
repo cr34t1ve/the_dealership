@@ -30,32 +30,31 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: scaffoldKey,
       drawer: Drawer(
-
         child: ListView(
-          // Important: Remove any padding from the ListView.
+            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
-        const DrawerHeader(
-        child: Text('Menu drawer'),
-        decoration: BoxDecoration(
-          color: Colors.red,
-        ),
-      ),
-      ListTile(
-        leading: Icon(Icons.home, size: 40,),
-        title: Text('First item'),
-        subtitle: Text("This is the 1st item"),
-        trailing: Icon(Icons.more_vert),
-        onTap: () {
-        },
-      ),
-      ListTile(
-        title: Text('Second item'),
-        onTap: () {
-        },
-      ),
-    ]
-        ),
+              const DrawerHeader(
+                child: Text('Menu drawer'),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  size: 40,
+                ),
+                title: Text('First item'),
+                subtitle: Text("This is the 1st item"),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('Second item'),
+                onTap: () {},
+              ),
+            ]),
       ),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size

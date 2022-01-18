@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'splash.dart';
 
 import 'Pages/home_page.dart';
 
@@ -17,12 +18,12 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       defaultTransition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 500),
       debugShowCheckedModeBanner: false,
       title: 'Car Rental App',
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }

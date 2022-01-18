@@ -34,6 +34,8 @@ dependencies:
   google_fonts: ^2.2.0
   firebase_auth:
   provider: ^6.0.2
+  lottie: ^1.2.1
+  introduction_screen: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -73,6 +75,7 @@ flutter:
     - assets/images/i30n.png
     - assets/images/golf.png
     - assets/images/yaris.png
+    - assets/images/seo.png
 
 
     # An image asset can refer to one or more resolution-specific "variants", see
