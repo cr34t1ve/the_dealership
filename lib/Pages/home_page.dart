@@ -13,7 +13,8 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
+bool drawerOpen = true;
+GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -39,26 +40,36 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
               height: size.width * 0.1,
               width: size.width * 0.1,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: isDarkMode
-                      ? const Color(0xff070606)
-                      : Colors.white, //icon bg color
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(
-                      10,
+           child: Container(
+                  decoration: BoxDecoration(
+                    color: isDarkMode
+                        ? const Color(0xff070606)
+                        : Colors.white, //icon bg color
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(
+                        10,
+                      ),
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: (){
+                      if (drawerOpen) {
+                        scaffoldKey.currentState!.openDrawer();
+                      } else {
+                        resetApp();
+                      }
+                    },
+                    child: Icon(
+                      (drawerOpen) ?UniconsLine.bars:UniconsLine.cancel,
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, //icon bg color
+                      size: size.height * 0.025,
                     ),
                   ),
                 ),
-                child: Icon(
-                  UniconsLine.bars,
-                  color: isDarkMode
-                      ? Colors.white
-                      : Colors.black, //icon bg color
-                  size: size.height * 0.025,
-                ),
               ),
-            ),
+
           ),
           automaticallyImplyLeading: false,
           titleSpacing: 0,
@@ -258,5 +269,11 @@ class _HomePageState extends State<HomePage> {
         width: 1.0,
       ),
     );
+  }
+
+  void resetApp() {
+    setState(() {
+      drawerOpen = true;
+    });
   }
 }

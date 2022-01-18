@@ -190,7 +190,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             const Spacer(),
                             Text(
-                              '${widget.carPrice}\$',
+                              '${widget.carPrice}\GHS',
                               style: GoogleFonts.poppins(
                                 color: isDarkMode
                                     ? Colors.white
@@ -286,38 +286,40 @@ class _DetailsPageState extends State<DetailsPage> {
                                       horizontal: size.width * 0.05,
                                       vertical: size.height * 0.015,
                                     ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          UniconsLine.map_marker,
-                                          color: isDarkMode ? Colors.white : Colors.black,
-                                          size: size.height * 0.05,
-                                        ),
-                                        Text(
-                                          'Katowice Airport',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
-                                            color: isDarkMode
-                                                ? Colors.white
-                                                :  Colors.black,
-                                            fontSize: size.width * 0.05,
-                                            fontWeight: FontWeight.bold,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            UniconsLine.map_marker,
+                                            color: isDarkMode ? Colors.white : Colors.black,
+                                            size: size.height * 0.05,
                                           ),
-                                        ),
-                                        Text(
-                                          'Wolności 90, 42-625 Pyrzowice',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
-                                            color: isDarkMode
-                                                ? Colors.white.withOpacity(0.7)
-                                                : Colors.black.withOpacity(0.7),
-                                            fontSize: size.width * 0.032,
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            'Katowice Airport',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.poppins(
+                                              color: isDarkMode
+                                                  ? Colors.white
+                                                  :  Colors.black,
+                                              fontSize: size.width * 0.05,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            'Wolności 90, 42-625 Pyrzowice',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.poppins(
+                                              color: isDarkMode
+                                                  ? Colors.white.withOpacity(0.7)
+                                                  : Colors.black.withOpacity(0.7),
+                                              fontSize: size.width * 0.032,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   SizedBox(

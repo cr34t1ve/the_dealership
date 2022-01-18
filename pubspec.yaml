@@ -32,6 +32,7 @@ dependencies:
   get: ^4.6.1
   unicons: ^2.0.2
   google_fonts: ^2.2.0
+  firebase_auth:
 
 
   # The following adds the Cupertino Icons font to your application.
