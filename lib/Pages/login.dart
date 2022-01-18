@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget
 {
-  String _email, _password;
-  static String email;
+  // String _email, _password;
+  // static String email;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,12 +55,13 @@ class SignInScreen extends StatelessWidget
                           onPressed: ()
                           {
                             print('Pressed SignUP!');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return SignUP();
-                              }),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) {
+                            //     //return SignUP();
+                            //   }
+                              //),
+                            //);
                           },
                         ),
                       ],
@@ -81,7 +82,7 @@ class SignInScreen extends StatelessWidget
                           Expanded(
                             child: TextField(
                               onChanged: (value){
-                                _email=value;
+                                //_email=value;
                               },
                               decoration: InputDecoration(
                                 hintText: "Email Address",
@@ -105,7 +106,7 @@ class SignInScreen extends StatelessWidget
                           child: TextField(
                             obscureText: true,
                             onChanged: (value){
-                              _password=value;
+                              //_password=value;
                             },
                             decoration: InputDecoration(
                               hintText: "Password",
@@ -132,10 +133,10 @@ class SignInScreen extends StatelessWidget
                       ),
                       onTap: ()async
                       {
-                        UserCredential user= await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+                        UserCredential user= await FirebaseAuth.instance.signInWithEmailAndPassword(email: "_email", password: "_password");
                         if(user!=null)
                         {
-                          email = _email;
+                          //email = _email;
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {

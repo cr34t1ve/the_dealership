@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:the_dealership/widgets/bottom_nav_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_dealership/widgets/drawer.dart';
 import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:the_dealership/widgets/homePage/top_brands.dart';
@@ -13,9 +14,12 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-bool drawerOpen = true;
-GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
 class _HomePageState extends State<HomePage> {
+  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  bool drawerOpen = true;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //check the size of device
@@ -24,53 +28,100 @@ class _HomePageState extends State<HomePage> {
         Brightness.dark; //check if device is in dark or light mode
 
     return Scaffold(
+      key: scaffoldKey,
+      drawer: Drawer(
+
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+        const DrawerHeader(
+        child: Text('Menu drawer'),
+        decoration: BoxDecoration(
+          color: Colors.red,
+        ),
+      ),
+      ListTile(
+        leading: Icon(Icons.home, size: 40,),
+        title: Text('First item'),
+        subtitle: Text("This is the 1st item"),
+        trailing: Icon(Icons.more_vert),
+        onTap: () {
+        },
+      ),
+      ListTile(
+        title: Text('Second item'),
+        onTap: () {
+        },
+      ),
+    ]
+        ),
+      ),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
-          bottomOpacity: 0.0,
-          elevation: 0.0,
           shadowColor: Colors.transparent,
+
           backgroundColor:
               isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
-          //appbar bg color
-          leading: Padding(
-            padding: EdgeInsets.only(
-              left: size.width * 0.05,
-            ),
-            child: SizedBox(
-              height: size.width * 0.1,
-              width: size.width * 0.1,
-           child: Container(
-                  decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? const Color(0xff070606)
-                        : Colors.white, //icon bg color
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        10,
-                      ),
-                    ),
-                  ),
-                  child: GestureDetector(
-                    onTap: (){
-                      if (drawerOpen) {
-                        scaffoldKey.currentState!.openDrawer();
-                      } else {
-                        resetApp();
-                      }
-                    },
-                    child: Icon(
-                      (drawerOpen) ?UniconsLine.bars:UniconsLine.cancel,
+          leading: Builder(
+              builder: (context) => IconButton(
+                    icon: new Icon(
+                      Icons.menu,
                       color: isDarkMode
                           ? Colors.white
                           : Colors.black, //icon bg color
                       size: size.height * 0.025,
                     ),
-                  ),
-                ),
-              ),
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                    // ),
+                    //       bottomOpacity: 0.0,
+                    //       elevation: 0.0,
+                    //       shadowColor: Colors.transparent,
+                    //       backgroundColor:
+                    //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+                    //       //appbar bg color
+                    //       leading: Padding(
+                    //         padding: EdgeInsets.only(
+                    //           left: size.width * 0.05,
+                    //         ),
+                    //         child: SizedBox(
+                    //           height: size.width * 0.1,
+                    //           width: size.width * 0.1,
+                    //
+                    //
+                    //          child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   color: isDarkMode
+                    //                       ? const Color(0xff070606)
+                    //                       : Colors.white, //icon bg color
+                    //                   borderRadius: const BorderRadius.all(
+                    //                     Radius.circular(
+                    //                       10,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //
+                    //
+                    //                   child: IconButton(
+                    //
+                    //
+                    //
+                    //                     icon:
+                    //                     Icon(
+                    //                       UniconsLine.bars,
+                    //                       color: isDarkMode
+                    //                           ? Colors.white
+                    //                           : Colors.black, //icon bg color
+                    //                       size: size.height * 0.025,
+                    //                     ),
+                    //             onPressed: ()=> Scaffold.of(context).openDrawer(),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //        ),
+                  )),
 
-          ),
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
@@ -158,9 +209,7 @@ class _HomePageState extends State<HomePage> {
                               'With Corporate Difference',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : Colors.black,
+                                color: isDarkMode ? Colors.white : Colors.black,
                                 fontSize: size.width * 0.06,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -176,9 +225,7 @@ class _HomePageState extends State<HomePage> {
                               'Enjoy Driving In Style',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : Colors.black,
+                                color: isDarkMode ? Colors.white : Colors.black,
                                 fontSize: size.width * 0.035,
                               ),
                             ),
@@ -250,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-               // buildTopBrands(size, isDarkMode),
+                // buildTopBrands(size, isDarkMode),
                 buildMostRented(size, isDarkMode),
                 buildFleets(size, isDarkMode),
               ],

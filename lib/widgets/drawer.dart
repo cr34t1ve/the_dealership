@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_dealership/assistants/size_config.dart';
 
 class MyDrawer extends StatefulWidget {
-  const MyDrawer({required Key key}) : super(key: key);
+// const MyDrawer({ required Key key}) : super(key: key);
 
   @override
   _MyDrawerState createState() => _MyDrawerState();
@@ -19,14 +20,14 @@ class _MyDrawerState extends State<MyDrawer> {
           backgroundColor: Colors.white,
           content: SingleChildScrollView(
             child: Column(
-              children: <Widget>[
+              children: const <Widget>[
                 Text('Are you certain you want to Sign Out?'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text(
+              child: const Text(
                 'Yes',
                 style: TextStyle(color: Colors.black),
               ),
@@ -39,7 +40,7 @@ class _MyDrawerState extends State<MyDrawer> {
               },
             ),
             TextButton(
-              child: Text(
+              child: const Text(
                 'Cancel',
                 style: TextStyle(color: Colors.red),
               ),
@@ -63,7 +64,7 @@ class _MyDrawerState extends State<MyDrawer> {
             padding: EdgeInsets.zero,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 // Text(
                 //   //uName,
                 //   style: TextStyle(
@@ -92,7 +93,7 @@ class _MyDrawerState extends State<MyDrawer> {
               },
               isThreeLine: false,
               dense: true,
-              leading: Icon(
+              leading: const Icon(
                 Icons.person,
                 color: Colors.black,
               ),
