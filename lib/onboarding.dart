@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:the_dealership/Pages/home_page.dart';
 
 import 'Pages/login.dart';
 
@@ -15,7 +16,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => SignInScreen()),
+     // MaterialPageRoute(builder: (_) => SignInScreen()),
+        MaterialPageRoute(builder: (_) => HomePage())
     );
   }
 
@@ -40,30 +42,30 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       key: introKey,
       pages: [
         PageViewModel(
-          title: "Order Newspaper & Magazine",
+          title: "Pick And Choose",
           body:
-          "Instead of having to buy an same newspaper for month, User can order different company's newspaper on daily basis",
-          image: Image(image: AssetImage('assets/images/golf.png'),height: 100, width: 100,),
+          "At the dealership,your specifications are our forte.wWe have you covered with all your Car needs",
+          image: Image(image: AssetImage('assets/images/caddy.png'),height: 150, width: 400,),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Profile based recommendation",
-          body:"Articles and Magazines are displayed according to the user taste",
-          image: Image(image: AssetImage('assets/images/yaris.png'),),
+          title: "Rentals",
+          body:"Our fleet has all your rental needs for casual and professional needs",
+          image: Image(image: AssetImage('assets/images/Rentals.png'),),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Manage Profiles",
+          title: "Luxury At its Peak",
           body:
           "User can manage their profiles and get profile based recommendations",
-          image: Image(image: AssetImage('assets/images/i30n.png'),),
+          image: Image(image: AssetImage('assets/images/lux.png'),),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Search",
+          title: "Fleet",
           body:
-          "User can search news, articles and magazines through text, voice, image annotation and QR Scan",
-          image: Image(image: AssetImage('assets/images/seo.png'),),
+          "",
+          image: Image(image: AssetImage('assets/images/fleet.png'),height: 150, width: 400,),
           decoration: pageDecoration,
         ),
       ],
