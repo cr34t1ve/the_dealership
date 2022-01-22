@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_dealership/Pages/home_page.dart';
+import 'package:the_dealership/Pages/Fleet.dart';
 import 'package:unicons/unicons.dart';
 
 import 'bottom_nav_item.dart';

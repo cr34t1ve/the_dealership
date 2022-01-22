@@ -8,14 +8,14 @@ import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:the_dealership/widgets/homePage/top_brands.dart';
 import 'package:unicons/unicons.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class RentalPage extends StatefulWidget {
+  const RentalPage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _RentalPageState createState() => _RentalPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RentalPageState extends State<RentalPage> {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool drawerOpen = true;
@@ -31,57 +31,57 @@ class _HomePageState extends State<HomePage> {
       key: scaffoldKey,
       drawer: Drawer(
         child: ListView(
-            // Important: Remove any padding from the ListView.
+          // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
-            Column(
-              
-              children: [
-                 SizedBox(
-                   height: 210,
-                   child: DrawerHeader(
+              Column(
 
-                     child: Container(
-                       height:500,
+                children: [
+                  SizedBox(
+                    height: 210,
+                    child: DrawerHeader(
 
-
-                       child: Column(
-
-                         children:const [
-
-                           CircleAvatar(
-                             backgroundColor: Colors.blue,
-                             radius: 50,
-                             child: Text(
-                               'Dealership',
-                               style: TextStyle(fontSize: 15, color: Colors.black),
-                             ), //Text
-                           ),
-                            Text(
-                             'UserName',
-                             style: TextStyle(fontSize: 15, color: Colors.black),
-                           ),
-
-                           Padding(
-                             padding: EdgeInsets.all(8.0),
-                             child: Text(
-                               'Email',
-                               style: TextStyle(fontSize: 15, color: Colors.black),
-                             ),
-                           ),
-            ]
-
-                       ),
+                      child: Container(
+                        height:500,
 
 
-                ),
+                        child: Column(
+
+                            children:const [
+
+                              CircleAvatar(
+                                backgroundColor: Colors.blue,
+                                radius: 50,
+                                child: Text(
+                                  'Dealership',
+                                  style: TextStyle(fontSize: 15, color: Colors.black),
+                                ), //Text
+                              ),
+                              Text(
+                                'UserName',
+                                style: TextStyle(fontSize: 15, color: Colors.black),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Email',
+                                  style: TextStyle(fontSize: 15, color: Colors.black),
+                                ),
+                              ),
+                            ]
+
+                        ),
+
+
+                      ),
 
 
 
-                ),
-                 ),
-              ],
-            ),
+                    ),
+                  ),
+                ],
+              ),
               ListTile(
                 leading: const Icon(
                   Icons.account_circle,
@@ -125,64 +125,64 @@ class _HomePageState extends State<HomePage> {
           shadowColor: Colors.transparent,
 
           backgroundColor:
-              isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+          isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
           leading: Builder(
               builder: (context) => IconButton(
-                    icon: new Icon(
-                      Icons.menu,
-                      color: isDarkMode
-                          ? Colors.white
-                          : Colors.black, //icon bg color
-                      size: size.height * 0.025,
-                    ),
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                    // ),
-                    //       bottomOpacity: 0.0,
-                    //       elevation: 0.0,
-                    //       shadowColor: Colors.transparent,
-                    //       backgroundColor:
-                    //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
-                    //       //appbar bg color
-                    //       leading: Padding(
-                    //         padding: EdgeInsets.only(
-                    //           left: size.width * 0.05,
-                    //         ),
-                    //         child: SizedBox(
-                    //           height: size.width * 0.1,
-                    //           width: size.width * 0.1,
-                    //
-                    //
-                    //          child: Container(
-                    //                 decoration: BoxDecoration(
-                    //                   color: isDarkMode
-                    //                       ? const Color(0xff070606)
-                    //                       : Colors.white, //icon bg color
-                    //                   borderRadius: const BorderRadius.all(
-                    //                     Radius.circular(
-                    //                       10,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //
-                    //
-                    //                   child: IconButton(
-                    //
-                    //
-                    //
-                    //                     icon:
-                    //                     Icon(
-                    //                       UniconsLine.bars,
-                    //                       color: isDarkMode
-                    //                           ? Colors.white
-                    //                           : Colors.black, //icon bg color
-                    //                       size: size.height * 0.025,
-                    //                     ),
-                    //             onPressed: ()=> Scaffold.of(context).openDrawer(),
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //        ),
-                  )),
+                icon: new Icon(
+                  Icons.menu,
+                  color: isDarkMode
+                      ? Colors.white
+                      : Colors.black, //icon bg color
+                  size: size.height * 0.025,
+                ),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+                // ),
+                //       bottomOpacity: 0.0,
+                //       elevation: 0.0,
+                //       shadowColor: Colors.transparent,
+                //       backgroundColor:
+                //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+                //       //appbar bg color
+                //       leading: Padding(
+                //         padding: EdgeInsets.only(
+                //           left: size.width * 0.05,
+                //         ),
+                //         child: SizedBox(
+                //           height: size.width * 0.1,
+                //           width: size.width * 0.1,
+                //
+                //
+                //          child: Container(
+                //                 decoration: BoxDecoration(
+                //                   color: isDarkMode
+                //                       ? const Color(0xff070606)
+                //                       : Colors.white, //icon bg color
+                //                   borderRadius: const BorderRadius.all(
+                //                     Radius.circular(
+                //                       10,
+                //                     ),
+                //                   ),
+                //                 ),
+                //
+                //
+                //                   child: IconButton(
+                //
+                //
+                //
+                //                     icon:
+                //                     Icon(
+                //                       UniconsLine.bars,
+                //                       color: isDarkMode
+                //                           ? Colors.white
+                //                           : Colors.black, //icon bg color
+                //                       size: size.height * 0.025,
+                //                     ),
+                //             onPressed: ()=> Scaffold.of(context).openDrawer(),
+                //                   ),
+                //                 ),
+                //               ),
+                //        ),
+              )),
 
           automaticallyImplyLeading: false,
           titleSpacing: 0,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'splash.dart';
 
-import 'Pages/home_page.dart';
+import 'Pages/Fleet.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

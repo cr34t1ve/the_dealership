@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:the_dealership/Pages/home_page.dart';
+import 'package:the_dealership/Pages/Fleet.dart';
 
 import 'Pages/login.dart';
 
