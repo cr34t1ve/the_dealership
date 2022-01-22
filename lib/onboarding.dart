@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:the_dealership/Pages/Fleet.dart';
+import 'package:the_dealership/Pages/fleet.dart';
+import 'package:the_dealership/Pages/homepage.dart';
 
 import 'Pages/login.dart';
 
@@ -17,7 +18,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   void _onIntroEnd(context) {
     Navigator.of(context).push(
      // MaterialPageRoute(builder: (_) => SignInScreen()),
-        MaterialPageRoute(builder: (_) => HomePage())
+        MaterialPageRoute(builder: (_) => homepage())
     );
   }
 

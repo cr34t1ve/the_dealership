@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_dealership/Pages/Fleet.dart';
+import 'package:the_dealership/Pages/fleet.dart';
+import 'package:the_dealership/Pages/homepage.dart';
 import 'package:unicons/unicons.dart';
 
 import 'bottom_nav_item.dart';
@@ -20,7 +21,7 @@ Widget buildBottomNavBar(int currIndex, Size size, bool isDarkMode) {
     onTap: (value) {
       if (value != currIndex) {
         if (value == 1) {
-          Get.off(const HomePage());
+          Get.off(const homepage());
         }
       }
     },
