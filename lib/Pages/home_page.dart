@@ -37,26 +37,49 @@ class _HomePageState extends State<HomePage> {
             Column(
               
               children: [
-                 DrawerHeader(child: Container(
-                   child: Column(
-                     children:const [
-                       CircleAvatar(
-                         backgroundColor: Colors.blue,
-                         radius: 50,
-                         child: Text(
-                           'Dealership',
-                           style: TextStyle(fontSize: 15, color: Colors.black),
-                         ), //Text
-                       )
+                 SizedBox(
+                   height: 210,
+                   child: DrawerHeader(
+
+                     child: Container(
+                       height:500,
+
+
+                       child: Column(
+
+                         children:const [
+
+                           CircleAvatar(
+                             backgroundColor: Colors.blue,
+                             radius: 50,
+                             child: Text(
+                               'Dealership',
+                               style: TextStyle(fontSize: 15, color: Colors.black),
+                             ), //Text
+                           ),
+                            Text(
+                             'UserName',
+                             style: TextStyle(fontSize: 15, color: Colors.black),
+                           ),
+
+                           Padding(
+                             padding: EdgeInsets.all(8.0),
+                             child: Text(
+                               'Email',
+                               style: TextStyle(fontSize: 15, color: Colors.black),
+                             ),
+                           ),
             ]
 
-                   )
-
-                ),
-
+                       ),
 
 
                 ),
+
+
+
+                ),
+                 ),
               ],
             ),
               ListTile(
