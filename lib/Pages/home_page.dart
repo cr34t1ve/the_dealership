@@ -83,11 +83,32 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
               ListTile(
-                leading: Icon(
-                  Icons.home,
-                  size: 40,
+                leading: const Icon(
+                  Icons.account_circle,
+                  size: 30,
                 ),
-                title: Text('First item'),
+                title: Text('Profile'),
+                subtitle: Text("View your account details here"),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
+              ),
+
+              ListTile(
+                leading: const Icon(
+                  Icons.info,
+                  size: 30,
+                ),
+                title: Text('About'),
+                subtitle: Text("Learn about us "),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.aod,
+                  size: 30,
+                ),
+                title: Text('Orders'),
                 subtitle: Text("This is the 1st item"),
                 trailing: Icon(Icons.more_vert),
                 onTap: () {},
