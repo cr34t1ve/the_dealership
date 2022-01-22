@@ -34,12 +34,31 @@ class _HomePageState extends State<HomePage> {
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
-              const DrawerHeader(
-                child: Text('Menu drawer'),
-                decoration: BoxDecoration(
-                  color: Colors.red,
+            Column(
+              
+              children: [
+                 DrawerHeader(child: Container(
+                   child: Column(
+                     children:const [
+                       CircleAvatar(
+                         backgroundColor: Colors.blue,
+                         radius: 50,
+                         child: Text(
+                           'Dealership',
+                           style: TextStyle(fontSize: 15, color: Colors.black),
+                         ), //Text
+                       )
+            ]
+
+                   )
+
                 ),
-              ),
+
+
+
+                ),
+              ],
+            ),
               ListTile(
                 leading: Icon(
                   Icons.home,

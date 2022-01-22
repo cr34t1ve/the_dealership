@@ -64,7 +64,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           title: "Fleet",
           body:
-          "",
+          "A wide Range of used and brand-new cars just for you our cherished clients."
+              "Sit back and fasten your seat belt for "
+              "our journey into the dealership ",
           image: Image(image: AssetImage('assets/images/fleet.png'),height: 150, width: 400,),
           decoration: pageDecoration,
         ),
