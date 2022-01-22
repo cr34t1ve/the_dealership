@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:lottie/lottie.dart';
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: Text("DEALERSHIP")
+        child: const Text("DEALERSHIP",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 30.0) ,)
         //Image.asset('assets/images/golf.png'),
 
       ),
