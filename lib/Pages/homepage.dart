@@ -308,88 +308,120 @@ class _homepageState extends State<homepage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.03,
-                            left: size.width * 0.04,
-                            bottom: size.height * 0.025,
-                          ),
-                          child: Row(
-                            children: [
 
+
+                        //fleets
+                        Container(
+
+                          child: Column(
+                            children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left: size.width * 0.025,
+                                  top: size.height * 0.03,
+                                  left: size.width * 0.04,
+                                  bottom: size.height * 0.025,
+                                ),
+                                child: Row(
+                                  children: [
+
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: size.width * 0.025,
+                                      ),
+
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+
+                                 Container(
+                                  margin: EdgeInsets.all(1),
+                                  child: CarouselSlider.builder(
+                                    itemCount: imageListfleet.length,
+                                    options: CarouselOptions(
+                                      enlargeCenterPage: true,
+                                      height: 230,
+                                      autoPlay: true,
+                                      autoPlayInterval: Duration(seconds: 3),
+                                      reverse: false,
+                                      aspectRatio: 5.0,
+                                    ),
+                                    itemBuilder: (context, i, id) {
+                                      //for onTap to redirect to another screen
+
+                                      return GestureDetector(
+                                        child: Container(
+
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(15),
+                                              border: Border.all(
+                                                color: Colors.white,
+                                              )),
+                                          //ClipRRect for image border radius
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(15),
+                                            child: Image.asset(
+
+                                              imageListfleet[i],
+                                              width: 2700,
+                                              //fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          var url = imageListfleet[i];
+                                          print(url.toString());
+                                        },
+
+
+                                      );
+                                    },
+                                  ),
+
+
+
+
+
                                 ),
 
-                              ),
+
+
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.of(context).push(
+                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                        MaterialPageRoute(builder: (_) => Fleet())
+                                    );
+
+                                  },
+                                  child: Text("Fleet",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.043,
+                                    ),),
+                                ),
+                              )
+
                             ],
                           ),
+
+                          decoration:  BoxDecoration(
+
+                              borderRadius:
+                              const BorderRadius.all(
+                                  Radius.circular(20)),
+                              border: Border.all(
+                          color: Colors.black,
+                          )),
                         ),
 
                         //Fleet
-                        Container(
-                          margin: EdgeInsets.all(1),
-                          child: CarouselSlider.builder(
-                            itemCount: imageListfleet.length,
-                            options: CarouselOptions(
-                              enlargeCenterPage: true,
-                              height: 230,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 3),
-                              reverse: false,
-                              aspectRatio: 5.0,
-                            ),
-                            itemBuilder: (context, i, id) {
-                              //for onTap to redirect to another screen
-
-                              return GestureDetector(
-                                child: Container(
-
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                      )),
-                                  //ClipRRect for image border radius
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-
-                                      imageListfleet[i],
-                                      width: 2700,
-                                      //fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                onTap: () {
-                                  var url = imageListfleet[i];
-                                  print(url.toString());
-                                },
 
 
-                              );
-                            },
-                          ),
-                        ),
-                         Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: (){
-                              Navigator.of(context).push(
-                                // MaterialPageRoute(builder: (_) => SignInScreen()),
-                                  MaterialPageRoute(builder: (_) => Fleet())
-                              );
-
-                            },
-                            child: Text("Fleet",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.043,
-                              ),),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -490,7 +522,7 @@ class _homepageState extends State<homepage> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
                                       border: Border.all(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                       )),
                                   //ClipRRect for image border radius
                                   child: ClipRRect(
