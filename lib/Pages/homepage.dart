@@ -312,7 +312,7 @@ class _homepageState extends State<homepage> {
 
                         //fleets
                         Container(
-
+                          width: double.infinity,
                           child: Column(
                             children: [
                               Padding(
