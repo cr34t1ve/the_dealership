@@ -37,6 +37,8 @@ dependencies:
   lottie: ^1.2.1
   introduction_screen: ^2.1.0
   cloud_firestore:
+  hexcolor: ^2.0.5
+  carousel_slider: ^4.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

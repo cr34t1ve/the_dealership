@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:unicons/unicons.dart';
@@ -20,6 +22,17 @@ class _homepageState extends State<homepage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> imageList = [
+      "assets/images/caddy.png",
+      "assets/images/golf.jpg",
+      "assets/images/UMB3.jpg",
+      "assets/images/UMB4.jpg",
+      "assets/images/UMB6.jpg",
+      "assets/images/UMB7.jpg",
+      "assets/images/UMB12.jpg",
+      //'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+    ];
+
     Size size = MediaQuery.of(context).size; //check the size of device
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness ==
@@ -264,17 +277,7 @@ class _homepageState extends State<homepage> {
                           padding: EdgeInsets.only(
                             top: size.height * 0.04,
                           ),
-                          child: Align(
-                            child: Text(
-                              'With Corporate Difference',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.06,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -351,6 +354,48 @@ class _homepageState extends State<homepage> {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.all(15),
+                          child: CarouselSlider.builder(
+                            itemCount: imageList.length,
+                            options: CarouselOptions(
+                              enlargeCenterPage: true,
+                              height: 230,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 3),
+                              reverse: false,
+                              aspectRatio: 5.0,
+                            ),
+                            itemBuilder: (context, i, id) {
+                              //for onTap to redirect to another screen
+
+                              return GestureDetector(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      border: Border.all(
+                                        color: HexColor("#FDD451"),
+                                      )),
+                                  //ClipRRect for image border radius
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+
+                                      imageList[i],
+                                      width: 500,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                onTap: () {
+                                  var url = imageList[i];
+                                  print(url.toString());
+                                },
+                              );
+                            },
                           ),
                         ),
                       ],
