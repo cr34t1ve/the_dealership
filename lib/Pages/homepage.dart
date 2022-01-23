@@ -24,14 +24,25 @@ class _homepageState extends State<homepage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> imageList = [
-      "assets/images/caddy.png",
-      "assets/images/Corolla.png",
-      "assets/images/Rentals.png",
+    final List<String> imageListfleet = [
       "assets/images/yaris.png",
+      "assets/images/Lincoln.png",
+      "assets/images/mondeo.png",
+      "assets/images/bentley02.png",
+      "assets/images/Sentra.png",
+      "assets/images/corolla.png",
+      //'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+    ];
+
+//Images for car rental
+    final List<String> imageListrental = [
+      "assets/images/juke.png",
+      "assets/images/v8.png",
+      "assets/images/Tahoe.png",
+      "assets/images/ford.png",
       "assets/images/lux.png",
-      "assets/images/f.png",
-      "assets/images/i30n.png",
+      "assets/images/v8.png",
+
       //'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     ];
 
@@ -320,7 +331,7 @@ class _homepageState extends State<homepage> {
                         Container(
                           margin: EdgeInsets.all(1),
                           child: CarouselSlider.builder(
-                            itemCount: imageList.length,
+                            itemCount: imageListfleet.length,
                             options: CarouselOptions(
                               enlargeCenterPage: true,
                               height: 230,
@@ -338,21 +349,21 @@ class _homepageState extends State<homepage> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
                                       border: Border.all(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                       )),
                                   //ClipRRect for image border radius
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(15),
                                     child: Image.asset(
 
-                                      imageList[i],
-                                      width: 600,
-                                      fit: BoxFit.cover,
+                                      imageListfleet[i],
+                                      width: 2700,
+                                      //fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
                                 onTap: () {
-                                  var url = imageList[i];
+                                  var url = imageListfleet[i];
                                   print(url.toString());
                                 },
 
@@ -461,7 +472,7 @@ class _homepageState extends State<homepage> {
                         Container(
                           margin: EdgeInsets.all(1),
                           child: CarouselSlider.builder(
-                            itemCount: imageList.length,
+                            itemCount: imageListrental.length,
                             options: CarouselOptions(
                               enlargeCenterPage: true,
                               height: 230,
@@ -486,14 +497,14 @@ class _homepageState extends State<homepage> {
                                     borderRadius: BorderRadius.circular(15),
                                     child: Image.asset(
 
-                                      imageList[i],
+                                      imageListrental[i],
                                       width: 600,
-                                      fit: BoxFit.cover,
+                                      // fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
                                 onTap: () {
-                                  var url = imageList[i];
+                                  var url = imageListrental[i];
                                   print(url.toString());
                                 },
 
