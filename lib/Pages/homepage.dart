@@ -26,7 +26,7 @@ class _homepageState extends State<homepage> {
   Widget build(BuildContext context) {
     final List<String> imageList = [
       "assets/images/caddy.png",
-      "assets/images/golf.png",
+      "assets/images/Corolla.png",
       "assets/images/Rentals.png",
       "assets/images/yaris.png",
       "assets/images/lux.png",
@@ -281,6 +281,7 @@ class _homepageState extends State<homepage> {
                           ),
 
                         ),
+                        //intro
                         Padding(
                           padding: EdgeInsets.only(
                             top: size.height * 0.01,
@@ -304,61 +305,18 @@ class _homepageState extends State<homepage> {
                           ),
                           child: Row(
                             children: [
-                              // SizedBox(
-                              //   width: size.width * 0.65,
-                              //   height: size.height * 0.06,
-                              //   child: TextField(
-                              //     //searchbar
-                              //     style: GoogleFonts.poppins(
-                              //       color: isDarkMode
-                              //           ? Colors.white
-                              //           : Colors.black,
-                              //     ),
-                              //     textInputAction: TextInputAction.next,
-                              //     decoration: InputDecoration(
-                              //       contentPadding: EdgeInsets.only(
-                              //         top: size.height * 0.01,
-                              //         left: size.width * 0.04,
-                              //         right: size.width * 0.04,
-                              //       ),
-                              //       enabledBorder: textFieldBorder(),
-                              //       focusedBorder: textFieldBorder(),
-                              //       border: textFieldBorder(),
-                              //       hintStyle: GoogleFonts.poppins(
-                              //         color: isDarkMode
-                              //             ? Colors.white
-                              //             : Colors.black,
-                              //       ),
-                              //       hintText: 'Search a car',
-                              //     ),
-                              //   ),
-                              // ),
+
                               Padding(
                                 padding: EdgeInsets.only(
                                   left: size.width * 0.025,
                                 ),
-                                // child: Container(
-                                //   height: size.height * 0.06,
-                                //   width: size.width * 0.14,
-                                //   decoration: const BoxDecoration(
-                                //     borderRadius: BorderRadius.all(
-                                //       Radius.circular(
-                                //         10,
-                                //       ),
-                                //     ),
-                                //     color: Colors.black, //filters bg color
-                                //   ),
-                                //   child: Icon(
-                                //     UniconsLine.sliders_v,
-                                //     color: Colors.white,
-                                //     size: size.height * 0.032,
-                                //   ),
-                                // ),
+
                               ),
                             ],
                           ),
                         ),
 
+                        //Fleet
                         Container(
                           margin: EdgeInsets.all(1),
                           child: CarouselSlider.builder(
@@ -425,6 +383,8 @@ class _homepageState extends State<homepage> {
                     ),
                   ),
                 ),
+
+                //RENTAL SLIDER
                 Padding(
                   padding: EdgeInsets.only(
                     top: size.height * 0.01,
@@ -471,35 +431,7 @@ class _homepageState extends State<homepage> {
                           ),
                           child: Row(
                             children: [
-                              // SizedBox(
-                              //   width: size.width * 0.65,
-                              //   height: size.height * 0.06,
-                              //   child: TextField(
-                              //     //searchbar
-                              //     style: GoogleFonts.poppins(
-                              //       color: isDarkMode
-                              //           ? Colors.white
-                              //           : Colors.black,
-                              //     ),
-                              //     textInputAction: TextInputAction.next,
-                              //     decoration: InputDecoration(
-                              //       contentPadding: EdgeInsets.only(
-                              //         top: size.height * 0.01,
-                              //         left: size.width * 0.04,
-                              //         right: size.width * 0.04,
-                              //       ),
-                              //       enabledBorder: textFieldBorder(),
-                              //       focusedBorder: textFieldBorder(),
-                              //       border: textFieldBorder(),
-                              //       hintStyle: GoogleFonts.poppins(
-                              //         color: isDarkMode
-                              //             ? Colors.white
-                              //             : Colors.black,
-                              //       ),
-                              //       hintText: 'Search a car',
-                              //     ),
-                              //   ),
-                              // ),
+
                               Padding(
                                 padding: EdgeInsets.only(
                                   left: size.width * 0.025,
