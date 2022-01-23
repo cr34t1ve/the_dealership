@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:the_dealership/Pages/fleet.dart';
+import 'package:the_dealership/Pages/rentals.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:the_dealership/widgets/homePage/fleets.dart';
@@ -24,12 +26,12 @@ class _homepageState extends State<homepage> {
   Widget build(BuildContext context) {
     final List<String> imageList = [
       "assets/images/caddy.png",
-      "assets/images/golf.jpg",
-      "assets/images/UMB3.jpg",
-      "assets/images/UMB4.jpg",
-      "assets/images/UMB6.jpg",
-      "assets/images/UMB7.jpg",
-      "assets/images/UMB12.jpg",
+      "assets/images/golf.png",
+      "assets/images/Rentals.png",
+      "assets/images/yaris.png",
+      "assets/images/lux.png",
+      "assets/images/f.png",
+      "assets/images/i30n.png",
       //'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     ];
 
@@ -285,7 +287,7 @@ class _homepageState extends State<homepage> {
                           ),
                           child: Align(
                             child: Text(
-                              'Enjoy Driving In Style',
+                              'Choose from our fleet of New and Home-Used vehicles',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 color: isDarkMode ? Colors.white : Colors.black,
@@ -302,63 +304,63 @@ class _homepageState extends State<homepage> {
                           ),
                           child: Row(
                             children: [
-                              SizedBox(
-                                width: size.width * 0.65,
-                                height: size.height * 0.06,
-                                child: TextField(
-                                  //searchbar
-                                  style: GoogleFonts.poppins(
-                                    color: isDarkMode
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                  textInputAction: TextInputAction.next,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                      top: size.height * 0.01,
-                                      left: size.width * 0.04,
-                                      right: size.width * 0.04,
-                                    ),
-                                    enabledBorder: textFieldBorder(),
-                                    focusedBorder: textFieldBorder(),
-                                    border: textFieldBorder(),
-                                    hintStyle: GoogleFonts.poppins(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                    hintText: 'Search a car',
-                                  ),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   width: size.width * 0.65,
+                              //   height: size.height * 0.06,
+                              //   child: TextField(
+                              //     //searchbar
+                              //     style: GoogleFonts.poppins(
+                              //       color: isDarkMode
+                              //           ? Colors.white
+                              //           : Colors.black,
+                              //     ),
+                              //     textInputAction: TextInputAction.next,
+                              //     decoration: InputDecoration(
+                              //       contentPadding: EdgeInsets.only(
+                              //         top: size.height * 0.01,
+                              //         left: size.width * 0.04,
+                              //         right: size.width * 0.04,
+                              //       ),
+                              //       enabledBorder: textFieldBorder(),
+                              //       focusedBorder: textFieldBorder(),
+                              //       border: textFieldBorder(),
+                              //       hintStyle: GoogleFonts.poppins(
+                              //         color: isDarkMode
+                              //             ? Colors.white
+                              //             : Colors.black,
+                              //       ),
+                              //       hintText: 'Search a car',
+                              //     ),
+                              //   ),
+                              // ),
                               Padding(
                                 padding: EdgeInsets.only(
                                   left: size.width * 0.025,
                                 ),
-                                child: Container(
-                                  height: size.height * 0.06,
-                                  width: size.width * 0.14,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                        10,
-                                      ),
-                                    ),
-                                    color: Colors.black, //filters bg color
-                                  ),
-                                  child: Icon(
-                                    UniconsLine.sliders_v,
-                                    color: Colors.white,
-                                    size: size.height * 0.032,
-                                  ),
-                                ),
+                                // child: Container(
+                                //   height: size.height * 0.06,
+                                //   width: size.width * 0.14,
+                                //   decoration: const BoxDecoration(
+                                //     borderRadius: BorderRadius.all(
+                                //       Radius.circular(
+                                //         10,
+                                //       ),
+                                //     ),
+                                //     color: Colors.black, //filters bg color
+                                //   ),
+                                //   child: Icon(
+                                //     UniconsLine.sliders_v,
+                                //     color: Colors.white,
+                                //     size: size.height * 0.032,
+                                //   ),
+                                // ),
                               ),
                             ],
                           ),
                         ),
 
                         Container(
-                          margin: EdgeInsets.all(15),
+                          margin: EdgeInsets.all(1),
                           child: CarouselSlider.builder(
                             itemCount: imageList.length,
                             options: CarouselOptions(
@@ -374,10 +376,11 @@ class _homepageState extends State<homepage> {
 
                               return GestureDetector(
                                 child: Container(
+
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
                                       border: Border.all(
-                                        color: HexColor("#FDD451"),
+                                        color: Colors.black,
                                       )),
                                   //ClipRRect for image border radius
                                   child: ClipRRect(
@@ -385,7 +388,7 @@ class _homepageState extends State<homepage> {
                                     child: Image.asset(
 
                                       imageList[i],
-                                      width: 500,
+                                      width: 600,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -394,10 +397,196 @@ class _homepageState extends State<homepage> {
                                   var url = imageList[i];
                                   print(url.toString());
                                 },
+
+
                               );
                             },
                           ),
                         ),
+                         Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).push(
+                                // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                  MaterialPageRoute(builder: (_) => Fleet())
+                              );
+
+                            },
+                            child: Text("Fleet",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                color: isDarkMode ? Colors.white : Colors.black,
+                                fontSize: size.width * 0.043,
+                              ),),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.01,
+                    left: size.width * 0.05,
+                    right: size.width * 0.05,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                      color: isDarkMode
+                          ? const Color(0xff070606)
+                          : Colors.white, //section bg color
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: size.height * 0.04,
+                          ),
+
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: size.height * 0.01,
+                          ),
+                          child: Align(
+                            child: Text(
+                              'Rent A Car now',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                color: isDarkMode ? Colors.white : Colors.black,
+                                fontSize: size.width * 0.035,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: size.height * 0.03,
+                            left: size.width * 0.04,
+                            bottom: size.height * 0.025,
+                          ),
+                          child: Row(
+                            children: [
+                              // SizedBox(
+                              //   width: size.width * 0.65,
+                              //   height: size.height * 0.06,
+                              //   child: TextField(
+                              //     //searchbar
+                              //     style: GoogleFonts.poppins(
+                              //       color: isDarkMode
+                              //           ? Colors.white
+                              //           : Colors.black,
+                              //     ),
+                              //     textInputAction: TextInputAction.next,
+                              //     decoration: InputDecoration(
+                              //       contentPadding: EdgeInsets.only(
+                              //         top: size.height * 0.01,
+                              //         left: size.width * 0.04,
+                              //         right: size.width * 0.04,
+                              //       ),
+                              //       enabledBorder: textFieldBorder(),
+                              //       focusedBorder: textFieldBorder(),
+                              //       border: textFieldBorder(),
+                              //       hintStyle: GoogleFonts.poppins(
+                              //         color: isDarkMode
+                              //             ? Colors.white
+                              //             : Colors.black,
+                              //       ),
+                              //       hintText: 'Search a car',
+                              //     ),
+                              //   ),
+                              // ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: size.width * 0.025,
+                                ),
+                                // child: Container(
+                                //   height: size.height * 0.06,
+                                //   width: size.width * 0.14,
+                                //   decoration: const BoxDecoration(
+                                //     borderRadius: BorderRadius.all(
+                                //       Radius.circular(
+                                //         10,
+                                //       ),
+                                //     ),
+                                //     color: Colors.black, //filters bg color
+                                //   ),
+                                //   child: Icon(
+                                //     UniconsLine.sliders_v,
+                                //     color: Colors.white,
+                                //     size: size.height * 0.032,
+                                //   ),
+                                // ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.all(1),
+                          child: CarouselSlider.builder(
+                            itemCount: imageList.length,
+                            options: CarouselOptions(
+                              enlargeCenterPage: true,
+                              height: 230,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 3),
+                              reverse: false,
+                              aspectRatio: 5.0,
+                            ),
+                            itemBuilder: (context, i, id) {
+                              //for onTap to redirect to another screen
+
+                              return GestureDetector(
+                                child: Container(
+
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      )),
+                                  //ClipRRect for image border radius
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+
+                                      imageList[i],
+                                      width: 600,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                onTap: () {
+                                  var url = imageList[i];
+                                  print(url.toString());
+                                },
+
+
+                              );
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).push(
+                                // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                  MaterialPageRoute(builder: (_) => RentalPage())
+                              );
+                            },
+                            child: Text("Rentals",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                color: isDarkMode ? Colors.white : Colors.black,
+                                fontSize: size.width * 0.043,
+                              ),),
+                          ),
+                        )
                       ],
                     ),
                   ),
