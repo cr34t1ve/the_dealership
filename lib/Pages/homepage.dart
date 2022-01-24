@@ -55,53 +55,40 @@ class _homepageState extends State<homepage> {
       key: scaffoldKey,
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
+            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
               Column(
-
                 children: [
                   SizedBox(
                     height: 210,
                     child: DrawerHeader(
-
                       child: Container(
-                        height:500,
-
-
-                        child: Column(
-
-                            children:const [
-
-                              CircleAvatar(
-                                backgroundColor: Colors.blue,
-                                radius: 50,
-                                child: Text(
-                                  'Dealership',
-                                  style: TextStyle(fontSize: 15, color: Colors.black),
-                                ), //Text
-                              ),
-                              Text(
-                                'UserName',
-                                style: TextStyle(fontSize: 15, color: Colors.black),
-                              ),
-
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Email',
-                                  style: TextStyle(fontSize: 15, color: Colors.black),
-                                ),
-                              ),
-                            ]
-
-                        ),
-
-
+                        height: 500,
+                        child: Column(children: const [
+                          CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            radius: 50,
+                            child: Text(
+                              'Dealership',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
+                            ), //Text
+                          ),
+                          Text(
+                            'UserName',
+                            style: TextStyle(fontSize: 15, color: Colors.black),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'Email',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
+                            ),
+                          ),
+                        ]),
                       ),
-
-
-
                     ),
                   ),
                 ],
@@ -116,7 +103,6 @@ class _homepageState extends State<homepage> {
                 trailing: Icon(Icons.more_vert),
                 onTap: () {},
               ),
-
               ListTile(
                 leading: const Icon(
                   Icons.info,
@@ -149,64 +135,64 @@ class _homepageState extends State<homepage> {
           shadowColor: Colors.transparent,
 
           backgroundColor:
-          isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+              isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
           leading: Builder(
               builder: (context) => IconButton(
-                icon: new Icon(
-                  Icons.menu,
-                  color: isDarkMode
-                      ? Colors.white
-                      : Colors.black, //icon bg color
-                  size: size.height * 0.025,
-                ),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-                // ),
-                //       bottomOpacity: 0.0,
-                //       elevation: 0.0,
-                //       shadowColor: Colors.transparent,
-                //       backgroundColor:
-                //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
-                //       //appbar bg color
-                //       leading: Padding(
-                //         padding: EdgeInsets.only(
-                //           left: size.width * 0.05,
-                //         ),
-                //         child: SizedBox(
-                //           height: size.width * 0.1,
-                //           width: size.width * 0.1,
-                //
-                //
-                //          child: Container(
-                //                 decoration: BoxDecoration(
-                //                   color: isDarkMode
-                //                       ? const Color(0xff070606)
-                //                       : Colors.white, //icon bg color
-                //                   borderRadius: const BorderRadius.all(
-                //                     Radius.circular(
-                //                       10,
-                //                     ),
-                //                   ),
-                //                 ),
-                //
-                //
-                //                   child: IconButton(
-                //
-                //
-                //
-                //                     icon:
-                //                     Icon(
-                //                       UniconsLine.bars,
-                //                       color: isDarkMode
-                //                           ? Colors.white
-                //                           : Colors.black, //icon bg color
-                //                       size: size.height * 0.025,
-                //                     ),
-                //             onPressed: ()=> Scaffold.of(context).openDrawer(),
-                //                   ),
-                //                 ),
-                //               ),
-                //        ),
-              )),
+                    icon: new Icon(
+                      Icons.menu,
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, //icon bg color
+                      size: size.height * 0.025,
+                    ),
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                    // ),
+                    //       bottomOpacity: 0.0,
+                    //       elevation: 0.0,
+                    //       shadowColor: Colors.transparent,
+                    //       backgroundColor:
+                    //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+                    //       //appbar bg color
+                    //       leading: Padding(
+                    //         padding: EdgeInsets.only(
+                    //           left: size.width * 0.05,
+                    //         ),
+                    //         child: SizedBox(
+                    //           height: size.width * 0.1,
+                    //           width: size.width * 0.1,
+                    //
+                    //
+                    //          child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   color: isDarkMode
+                    //                       ? const Color(0xff070606)
+                    //                       : Colors.white, //icon bg color
+                    //                   borderRadius: const BorderRadius.all(
+                    //                     Radius.circular(
+                    //                       10,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //
+                    //
+                    //                   child: IconButton(
+                    //
+                    //
+                    //
+                    //                     icon:
+                    //                     Icon(
+                    //                       UniconsLine.bars,
+                    //                       color: isDarkMode
+                    //                           ? Colors.white
+                    //                           : Colors.black, //icon bg color
+                    //                       size: size.height * 0.025,
+                    //                     ),
+                    //             onPressed: ()=> Scaffold.of(context).openDrawer(),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //        ),
+                  )),
 
           automaticallyImplyLeading: false,
           titleSpacing: 0,
@@ -290,7 +276,6 @@ class _homepageState extends State<homepage> {
                           padding: EdgeInsets.only(
                             top: size.height * 0.04,
                           ),
-
                         ),
                         //intro
                         Padding(
@@ -309,7 +294,6 @@ class _homepageState extends State<homepage> {
                           ),
                         ),
 
-
                         //fleets
                         Container(
                           width: double.infinity,
@@ -323,105 +307,99 @@ class _homepageState extends State<homepage> {
                                 ),
                                 child: Row(
                                   children: [
-
                                     Padding(
                                       padding: EdgeInsets.only(
                                         left: size.width * 0.025,
                                       ),
-
                                     ),
                                   ],
                                 ),
                               ),
+                              Container(
+                                margin: EdgeInsets.all(1),
+                                child: CarouselSlider.builder(
+                                  itemCount: imageListfleet.length,
+                                  options: CarouselOptions(
+                                    enlargeCenterPage: true,
+                                    height: 230,
+                                    autoPlay: true,
+                                    autoPlayInterval: Duration(seconds: 3),
+                                    reverse: false,
+                                    aspectRatio: 5.0,
+                                  ),
+                                  itemBuilder: (context, i, id) {
+                                    //for onTap to redirect to another screen
 
-
-                                 Container(
-                                  margin: EdgeInsets.all(1),
-                                  child: CarouselSlider.builder(
-                                    itemCount: imageListfleet.length,
-                                    options: CarouselOptions(
-                                      enlargeCenterPage: true,
-                                      height: 230,
-                                      autoPlay: true,
-                                      autoPlayInterval: Duration(seconds: 3),
-                                      reverse: false,
-                                      aspectRatio: 5.0,
-                                    ),
-                                    itemBuilder: (context, i, id) {
-                                      //for onTap to redirect to another screen
-
-                                      return GestureDetector(
-                                        child: Container(
-
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(15),
-                                              border: Border.all(
-                                                color: Colors.white,
-                                              )),
-                                          //ClipRRect for image border radius
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(15),
-                                            child: Image.asset(
-
-                                              imageListfleet[i],
-                                              width: 2700,
-                                              //fit: BoxFit.cover,
-                                            ),
+                                    return GestureDetector(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            )),
+                                        //ClipRRect for image border radius
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          child: Image.asset(
+                                            imageListfleet[i],
+                                            width: 2700,
+                                            //fit: BoxFit.cover,
                                           ),
                                         ),
-                                        onTap: () {
-                                          var url = imageListfleet[i];
-                                          print(url.toString());
-                                        },
-
-
-                                      );
-                                    },
-                                  ),
-
-
-
-
-
+                                      ),
+                                      onTap: () {
+                                        var url = imageListfleet[i];
+                                        print(url.toString());
+                                      },
+                                    );
+                                  },
                                 ),
-
-
-
+                              ),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     Navigator.of(context).push(
-                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
-                                        MaterialPageRoute(builder: (_) => Fleet())
-                                    );
-
+                                        // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                        MaterialPageRoute(
+                                            builder: (_) => Fleet()));
                                   },
-                                  child: Text("Fleet",
+                                  child: Text(
+                                    "Fleet",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.043,
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                               )
-
                             ],
                           ),
-
-                          decoration:  BoxDecoration(
-
-                              borderRadius:
-                              const BorderRadius.all(
-                                  Radius.circular(20)),
-                              border: Border.all(
-                          color: Colors.black,
-                          )),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              color: Colors.white12,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 7,
+                                offset:
+                                    Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
                         ),
 
                         //Fleet
-
-
                       ],
                     ),
                   ),
@@ -449,7 +427,6 @@ class _homepageState extends State<homepage> {
                           padding: EdgeInsets.only(
                             top: size.height * 0.04,
                           ),
-
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -474,7 +451,6 @@ class _homepageState extends State<homepage> {
                           ),
                           child: Row(
                             children: [
-
                               Padding(
                                 padding: EdgeInsets.only(
                                   left: size.width * 0.025,
@@ -501,67 +477,91 @@ class _homepageState extends State<homepage> {
                           ),
                         ),
 
+
                         Container(
-                          margin: EdgeInsets.all(1),
-                          child: CarouselSlider.builder(
-                            itemCount: imageListrental.length,
-                            options: CarouselOptions(
-                              enlargeCenterPage: true,
-                              height: 230,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 3),
-                              reverse: false,
-                              aspectRatio: 5.0,
-                            ),
-                            itemBuilder: (context, i, id) {
-                              //for onTap to redirect to another screen
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(1),
+                                child: CarouselSlider.builder(
+                                  itemCount: imageListrental.length,
+                                  options: CarouselOptions(
+                                    enlargeCenterPage: true,
+                                    height: 230,
+                                    autoPlay: true,
+                                    autoPlayInterval: Duration(seconds: 3),
+                                    reverse: false,
+                                    aspectRatio: 5.0,
+                                  ),
+                                  itemBuilder: (context, i, id) {
+                                    //for onTap to redirect to another screen
 
-                              return GestureDetector(
-                                child: Container(
-
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                      )),
-                                  //ClipRRect for image border radius
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-
-                                      imageListrental[i],
-                                      width: 600,
-                                      // fit: BoxFit.cover,
+                                    return GestureDetector(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            )),
+                                        //ClipRRect for image border radius
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: Image.asset(
+                                            imageListrental[i],
+                                            width: 600,
+                                            // fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        var url = imageListrental[i];
+                                        print(url.toString());
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                        MaterialPageRoute(
+                                            builder: (_) => RentalPage()));
+                                  },
+                                  child: Text(
+                                    "Rentals",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.043,
                                     ),
                                   ),
                                 ),
-                                onTap: () {
-                                  var url = imageListrental[i];
-                                  print(url.toString());
-                                },
+                              ),
+                            ],
+                          ),
 
-
-                              );
-                            },
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              color: Colors.white12,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 7,
+                                offset:
+                                Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: (){
-                              Navigator.of(context).push(
-                                // MaterialPageRoute(builder: (_) => SignInScreen()),
-                                  MaterialPageRoute(builder: (_) => RentalPage())
-                              );
-                            },
-                            child: Text("Rentals",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.043,
-                              ),),
-                          ),
-                        )
+
                       ],
                     ),
                   ),
@@ -593,5 +593,3 @@ class _homepageState extends State<homepage> {
     });
   }
 }
-
-
