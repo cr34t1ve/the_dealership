@@ -264,15 +264,15 @@ class _fleetState extends State<Fleet> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                            top: size.height * 0.04,
+                            top: size.height * 0.03,
                           ),
                           child: Align(
                             child: Text(
-                              'With Corporate Difference',
+                              'Welcome to Our Fleet of Cars',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.06,
+                                fontSize: size.width * 0.05,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

@@ -274,25 +274,11 @@ class _homepageState extends State<homepage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                            top: size.height * 0.04,
+                            top: size.height * 0.01,
                           ),
                         ),
                         //intro
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.01,
-                          ),
-                          child: Align(
-                            child: Text(
-                              'Choose from our fleet of New and Home-Used vehicles',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.035,
-                              ),
-                            ),
-                          ),
-                        ),
+
 
                         //fleets
                         Container(
@@ -301,7 +287,43 @@ class _homepageState extends State<homepage> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  top: size.height * 0.03,
+                                  top: size.height * 0.02,
+
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    'DEALERSHIP ',
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.03,
+                                      fontWeight: FontWeight.bold,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: size.height * 0.00,
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    'Choose from our fleet ',
+                                    textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                        color: isDarkMode ? Colors.white : Colors.black,
+                                        fontSize: size.width * 0.04,
+                                        fontWeight: FontWeight.bold,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: size.height * 0.00,
                                   left: size.width * 0.04,
                                   bottom: size.height * 0.025,
                                 ),
@@ -370,10 +392,10 @@ class _homepageState extends State<homepage> {
                                     "Fleet",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      fontSize: size.width * 0.043,
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.04,
+                                      fontWeight: FontWeight.bold,
+
                                     ),
                                   ),
                                 ),
@@ -425,62 +447,61 @@ class _homepageState extends State<homepage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                            top: size.height * 0.04,
+                            top: size.height * 0.01,
                           ),
                         ),
+
                         Padding(
                           padding: EdgeInsets.only(
                             top: size.height * 0.01,
-                          ),
-                          child: Align(
-                            child: Text(
-                              'Rent A Car now',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: isDarkMode ? Colors.white : Colors.black,
-                                fontSize: size.width * 0.035,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.03,
                             left: size.width * 0.04,
                             bottom: size.height * 0.025,
                           ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: size.width * 0.025,
-                                ),
-                                // child: Container(
-                                //   height: size.height * 0.06,
-                                //   width: size.width * 0.14,
-                                //   decoration: const BoxDecoration(
-                                //     borderRadius: BorderRadius.all(
-                                //       Radius.circular(
-                                //         10,
-                                //       ),
-                                //     ),
-                                //     color: Colors.black, //filters bg color
-                                //   ),
-                                //   child: Icon(
-                                //     UniconsLine.sliders_v,
-                                //     color: Colors.white,
-                                //     size: size.height * 0.032,
-                                //   ),
-                                // ),
-                              ),
-                            ],
-                          ),
+
                         ),
 
 
                         Container(
                           child: Column(
+
+
                             children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: size.height * 0.02,
+
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    'DEALERSHIP ',
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.03,
+                                      fontWeight: FontWeight.bold,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                              padding: EdgeInsets.only(
+                                top: size.height * 0.02,
+                              ),
+                              child: Align(
+                                child: Text(
+                                  'Rent A Car now',
+                                  textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      fontSize: size.width * 0.04,
+                                      fontWeight: FontWeight.bold,
+
+                                    ),
+                                ),
+                              ),
+                            ),
                               Container(
                                 margin: EdgeInsets.all(1),
                                 child: CarouselSlider.builder(
