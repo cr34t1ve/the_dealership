@@ -12,7 +12,7 @@ import 'package:unicons/unicons.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
-
+  static const String idScreen = "homepage";
   @override
   _homepageState createState() => _homepageState();
 }

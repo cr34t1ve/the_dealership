@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_dealership/Pages/homepage.dart';
 import 'splash.dart';
 
 import 'Pages/fleet.dart';
@@ -24,6 +25,8 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Car Rental App',
       home: SplashScreen(),
+
+      initialRoute:  homepage.idScreen,
     );
   }
 }
