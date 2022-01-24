@@ -16,9 +16,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).push(
-     // MaterialPageRoute(builder: (_) => SignInScreen()),
-        MaterialPageRoute(builder: (_) => homepage())
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+            builder: (BuildContext context) =>homepage())
     );
   }
 

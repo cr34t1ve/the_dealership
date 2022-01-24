@@ -15,9 +15,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (context){
-      return OnBoardingPage();
-    }));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+           OnBoardingPage(),
+        ));
   }
 
   @override
@@ -28,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: new Center(
         child: const Text("DEALERSHIP",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 30.0) ,)
         //Image.asset('assets/images/golf.png'),

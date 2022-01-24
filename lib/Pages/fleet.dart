@@ -360,7 +360,7 @@ class _fleetState extends State<Fleet> {
                   ),
                 ),
                 // buildTopBrands(size, isDarkMode),
-                buildMostRented(size, isDarkMode),
+
                 buildFleets(size, isDarkMode),
               ],
             ),
