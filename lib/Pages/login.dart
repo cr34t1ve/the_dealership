@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import '../signup.dart';
 // import 'signup.dart';
 
+
 class SignInScreen extends StatelessWidget {
+  static const String idScreen = "Login";
+
   //ch
   // String _email, _password;
   // static String email;

@@ -18,7 +18,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-            builder: (BuildContext context) =>homepage())
+            builder: (BuildContext context) =>SignInScreen())
     );
   }
 

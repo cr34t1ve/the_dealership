@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
 import 'splash.dart';
 
@@ -7,6 +10,7 @@ import 'Pages/fleet.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const App());
 }
 
@@ -26,7 +30,8 @@ class _AppState extends State<App> {
       title: 'Car Rental App',
       home: SplashScreen(),
 
-      initialRoute:  homepage.idScreen,
+         initialRoute:  SignInScreen.idScreen,
+      //initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
     );
   }
 }

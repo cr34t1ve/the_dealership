@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "829773441286",
+    "project_id": "thedealership-a0ac9",
+    "storage_bucket": "thedealership-a0ac9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829773441286:android:4fbb79023397417749d687",
+        "android_client_info": {
+          "package_name": "com.example.the_dealership"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829773441286-oflggibfb22e9j2iqs5vsfvjc1uc1s54.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.the_dealership",
+            "certificate_hash": "9c939e842824f541a65ce402c8a5a2c34284ec98"
+          }
+        },
+        {
+          "client_id": "829773441286-k7666mnb33ufb1l7065oun75o594ed9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl5eqr9q4dVXWKF9TiZYoAF4f8wlw0vmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829773441286-k7666mnb33ufb1l7065oun75o594ed9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
