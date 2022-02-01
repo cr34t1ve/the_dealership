@@ -136,7 +136,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
-                                  controller: emailTextEditingController,
+                                  controller: phoneTextEditingController,
                                   onChanged: (value) {
                                     _mobileNumber = value;
                                   },
@@ -236,17 +236,14 @@ class SignUP extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onTap: ()  async{
+                          onTap: ()  {
                             if (nameTextEditingController.text.length < 0) {
                               displayToast("Name must be atleast 3 characters.", context);
                             }
                             else if (!emailTextEditingController.text.contains("@")) {
                               displayToast("Email address is not Valid", context);
                             }
-                            // else if(phoneTextEditingController.text.isEmpty)
-                            // {
-                            //   displayToast("Phone Number is mandatory", context);
-                            // }
+
                             else if (phoneTextEditingController.text.isEmpty) {
                               displayToast("PhoneNumber are mandatory", context);
                             }
@@ -285,12 +282,12 @@ class SignUP extends StatelessWidget {
         'MobileNumber': _mobileNumber,
         'Email': _email,
       });
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return SignInScreen();
-        }),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) {
+      //     return SignInScreen();
+      //   }),
+      //);
 
     }
   }
@@ -333,7 +330,7 @@ class SignUP extends StatelessWidget {
       Map userDataMap={
         "name": nameTextEditingController.text.trim(),
         "email": emailTextEditingController.text.trim(),
-        "phone": phoneTextEditingController.text.trim(),
+        //"phone": phoneTextEditingController.text.trim(),
 
       };
       clients.child(firebaseUser!.uid).set(userDataMap);
@@ -355,6 +352,7 @@ class SignUP extends StatelessWidget {
       displayToast("user has not been created", context);
     }
   }
+
   displayToast(String message,BuildContext context)
   {
     Fluttertoast.showToast(msg: message);
