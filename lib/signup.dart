@@ -3,12 +3,21 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'Pages/login.dart';
+import 'assistants/progressdialog.dart';
+import 'main.dart';
 
 class SignUP extends StatelessWidget {
-  late String _email, _password, _fullName, _mobileNumber;
 
+  TextEditingController nameTextEditingController= TextEditingController();
+  TextEditingController emailTextEditingController= TextEditingController();
+  TextEditingController passwordTextEditingController= TextEditingController();
+  TextEditingController phoneTextEditingController= TextEditingController();
+  late String _email, _password, _fullName, _mobileNumber;
+  User ?firebaseUser;
+  User? currentfirebaseUser;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,6 +107,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
+                                  controller: nameTextEditingController,
                                   onChanged: (value) {
                                     _fullName = value;
                                   },
@@ -126,6 +136,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
+                                  controller: emailTextEditingController,
                                   onChanged: (value) {
                                     _mobileNumber = value;
                                   },
@@ -154,6 +165,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
+                                  controller: emailTextEditingController,
                                   onChanged: (value) {
                                     _email = value;
                                   },
@@ -182,6 +194,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
+                                  controller: passwordTextEditingController,
                                     obscureText: true,
                                   onChanged: (value) {
                                     _password = value;
@@ -223,27 +236,28 @@ class SignUP extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onTap: () async {
-                            UserCredential user = await FirebaseAuth.instance
-                                .createUserWithEmailAndPassword(
-                                    email: _email.trim(), password: _password.trim());
-                            if (user != null) {
-                              await FirebaseFirestore.instance
-                                  .collection('Users')
-                                  .doc(_email)
-                                  .set({
-                                'FullName': _fullName,
-                                'MobileNumber': _mobileNumber,
-                                'Email': _email,
-                              });
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return SignInScreen();
-                                }),
-                              );
-                            } else {
-                              print('user does not exist');
+                          onTap: ()  async{
+                            if (nameTextEditingController.text.length < 0) {
+                              displayToast("Name must be atleast 3 characters.", context);
+                            }
+                            else if (!emailTextEditingController.text.contains("@")) {
+                              displayToast("Email address is not Valid", context);
+                            }
+                            // else if(phoneTextEditingController.text.isEmpty)
+                            // {
+                            //   displayToast("Phone Number is mandatory", context);
+                            // }
+                            else if (phoneTextEditingController.text.isEmpty) {
+                              displayToast("PhoneNumber are mandatory", context);
+                            }
+
+                            else if (passwordTextEditingController.text.length < 6) {
+                              displayToast("Password must be atleast 6 Characters", context);
+                            }
+                            else  {
+                              Future.wait([registerNewUser(context),
+                                registerinfirestore(context)]);
+
                             }
                           },
                         ),
@@ -256,5 +270,94 @@ class SignUP extends StatelessWidget {
       ),
 
     );
+  }
+
+  Future<void>registerinfirestore(BuildContext context)async{
+    UserCredential user = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+        email: _email.trim(), password: _password.trim());
+    if (user != null) {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(_email)
+          .set({
+        'FullName': _fullName,
+        'MobileNumber': _mobileNumber,
+        'Email': _email,
+      });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return SignInScreen();
+        }),
+      );
+
+    }
+  }
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  Future<void> registerNewUser(BuildContext context)
+  async {
+
+
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context)
+        {
+          return ProgressDialog(message: "Registering,Please wait.....",);
+
+        }
+
+
+    );
+
+
+
+
+    firebaseUser=(await _firebaseAuth
+        .createUserWithEmailAndPassword(
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text
+    ).catchError((errMsg){
+      Navigator.pop(context);
+      displayToast("Error"+errMsg.toString(), context);
+
+    })).user;
+
+    if (firebaseUser != null)// user created
+
+        {
+      //save use into to database
+
+
+      Map userDataMap={
+        "name": nameTextEditingController.text.trim(),
+        "email": emailTextEditingController.text.trim(),
+        "phone": phoneTextEditingController.text.trim(),
+
+      };
+      clients.child(firebaseUser!.uid).set(userDataMap);
+      // Admin.child(firebaseUser!.uid).set(userDataMap);
+
+      currentfirebaseUser = firebaseUser;
+
+
+
+      displayToast("Congratulation, your account has been created", context);
+
+      Navigator.pushNamed(context,  SignInScreen.idScreen);
+
+    }
+    else
+    {
+      Navigator.pop(context);
+      //error occured - display error
+      displayToast("user has not been created", context);
+    }
+  }
+  displayToast(String message,BuildContext context)
+  {
+    Fluttertoast.showToast(msg: message);
+
   }
 }

@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
 import 'splash.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 import 'Pages/fleet.dart';
 
@@ -13,6 +15,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(const App());
 }
+DatabaseReference clients = FirebaseDatabase.instance.ref().child("Clients");
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
