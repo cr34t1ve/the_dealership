@@ -18,7 +18,7 @@ class SignUP extends StatelessWidget {
           Navigator.pop(context);
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 1),
           child: Row(
             children: <Widget>[
               Container(
@@ -37,6 +37,7 @@ class SignUP extends StatelessWidget {
     bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       body: SingleChildScrollView(
+
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
@@ -44,7 +45,7 @@ class SignUP extends StatelessWidget {
               padding: const EdgeInsets.all(15.0),
               child: _backButton(),
             ),
-            Text("DEALERSHIP"),
+            Text("DEALERSHIP",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),),
             Container(
               margin: const EdgeInsets.only(top: 20),
               height: 100,
@@ -63,7 +64,6 @@ class SignUP extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Container(
-                    height: size.height,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -81,107 +81,119 @@ class SignUP extends StatelessWidget {
                                 )),
                           ],
                         ),
-                        Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Icon(
-                                Icons.person,
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : const Color(0xff070606),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                onChanged: (value) {
-                                  _fullName = value;
-                                },
-                                decoration: InputDecoration(
-                                  hintText: "Full Name",
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 12),
+                                child: Icon(
+                                  Icons.person,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : const Color(0xff070606),
                                 ),
                               ),
-                            )
-                          ],
+                              Expanded(
+                                child: TextField(
+                                  onChanged: (value) {
+                                    _fullName = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Full Name",
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 16),
-                              child: Icon(
-                                Icons.phone,
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : const Color(0xff070606),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                onChanged: (value) {
-                                  _mobileNumber = value;
-                                },
-                                decoration: const InputDecoration(
-                                  hintText: "Mobile Number",
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 16),
+                                child: Icon(
+                                  Icons.phone,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : const Color(0xff070606),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 16),
-                              child: Icon(
-                                Icons.alternate_email,
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : const Color(0xff070606),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                onChanged: (value) {
-                                  _email = value;
-                                },
-                                decoration: InputDecoration(
-                                  hintText: "Email Address",
+                              Expanded(
+                                child: TextField(
+                                  onChanged: (value) {
+                                    _mobileNumber = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Mobile Number",
+                                  ),
                                 ),
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
-                        Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(right: 16),
-                              child: Icon(
-                                Icons.lock,
-                                color: isDarkMode
-                                    ? Colors.white
-                                    : const Color(0xff070606),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                onChanged: (value) {
-                                  _password = value;
-                                },
-                                decoration: const InputDecoration(
-                                  hintText: "Password",
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 16),
+                                child: Icon(
+                                  Icons.alternate_email,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : const Color(0xff070606),
                                 ),
                               ),
-                            )
-                          ],
+                              Expanded(
+                                child: TextField(
+                                  onChanged: (value) {
+                                    _email = value;
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: "Email Address",
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        Spacer(),
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(right: 16),
+                                child: Icon(
+                                  Icons.lock,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : const Color(0xff070606),
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  onChanged: (value) {
+                                    _password = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Password",
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+
                         GestureDetector(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
