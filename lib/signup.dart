@@ -182,6 +182,7 @@ class SignUP extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextField(
+                                    obscureText: true,
                                   onChanged: (value) {
                                     _password = value;
                                   },
