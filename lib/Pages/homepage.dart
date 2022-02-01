@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -123,6 +124,26 @@ class _homepageState extends State<homepage> {
                 trailing: Icon(Icons.more_vert),
                 onTap: () {},
               ),
+
+              const SizedBox(
+                height: 25,
+              ),
+
+              Column(children: [
+                ListTile(
+                  onTap: () {
+                    _showMyDialog();
+                  },
+                  leading: const Icon(
+                    Icons.logout,
+                    color: Colors.black,
+                  ),
+                  title: Text(
+                    "Sign Out",
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                ),
+              ]),
               ListTile(
                 title: Text('Second item'),
                 onTap: () {},
@@ -612,5 +633,50 @@ class _homepageState extends State<homepage> {
     setState(() {
       drawerOpen = true;
     });
+  }
+
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sign Out'),
+          backgroundColor: Colors.white,
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Text('Are you certain you want to Sign Out?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'Yes',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                print('yes');
+                FirebaseAuth.instance.signOut();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/login', (route) => false);
+                // Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
