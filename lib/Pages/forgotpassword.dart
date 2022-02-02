@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:the_dealership/main.dart';
+import 'package:unicons/unicons.dart';
 
 class ForgotPassword extends StatelessWidget {
   static String id = 'forgot-password';
@@ -17,8 +20,31 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    Size size = MediaQuery.of(context).size; //check the size of device
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness ==
+        Brightness.dark; //check if device is in dark or light mode
+
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.white10,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0), //appbar size
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          automaticallyImplyLeading: true,
+          titleSpacing: 0,
+          leadingWidth: size.width * 0.15,
+          title: Text("Forgot Password"),
+
+
+
+          centerTitle: true,
+
+        ),
+      ),
       body: Form(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -26,8 +52,12 @@ class ForgotPassword extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Email Your Email',
+                'Enter Your Email',
                 style: TextStyle(fontSize: 30, color: Colors.white),
+              ),
+              Text(
+                'To Reset Your Password',
+                style: TextStyle(fontSize:12, color: Colors.grey),
               ),
               TextFormField(
                 controller: emailTextEditingController,
