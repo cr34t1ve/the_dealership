@@ -85,13 +85,15 @@ class ForgotPassword extends StatelessWidget {
               ),
               SizedBox(height: 20),
               RaisedButton(
-                child: Text('Send Email'),
-                onPressed: () {resetPassword(context);},
+                child: Text('Verify'),
+                onPressed: () {resetPassword(context);
+
+
+                },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30))
               ),
-              FlatButton(
-                child: Text('Sign In'),
-                onPressed: () {},
-              )
+
             ],
           ),
         ),
@@ -101,7 +103,7 @@ class ForgotPassword extends StatelessWidget {
   Future resetPassword(BuildContext context) async{
     await FirebaseAuth.instance.sendPasswordResetEmail(email: emailTextEditingController.text.trim());
 
-    displayToast("Logged-in As A Board Member",context);
+    displayToast("Your Reset Request is sent.Check your email.",context);
   }
   //
   displayToast(String message, BuildContext context) {
