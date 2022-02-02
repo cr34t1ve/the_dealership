@@ -8,6 +8,10 @@ import 'Pages/login.dart';
 
 
 class OnBoardingPage extends StatefulWidget {
+
+  static const String idScreen = "Onboard";
+
+  OnBoardingPage({Key? key}) : super(key: key);
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
 }
@@ -16,10 +20,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) =>SignInScreen())
-    );
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+        homepage()), (Route<dynamic> route) => false);
+    //Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(homepage.idScreen);
+    // Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(
+    //         builder: (BuildContext context) =>homepage())
+    //);
   }
 
   /*Widget _buildImage(String assetName) {

@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
+import 'package:the_dealership/onboarding.dart';
 import 'package:the_dealership/signup.dart';
 import 'splash.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -40,7 +41,7 @@ class _AppState extends State<App> {
         SignUP.idScreen:(context) =>SignUP(),
         SignInScreen.idScreen:(context)=>SignInScreen(),
         homepage.idScreen:(context) =>homepage(),
-        //VotersScreen.idScreen:(context) =>VotersScreen()
+      OnBoardingPage.idScreen:(context) =>OnBoardingPage()
 
       },
 

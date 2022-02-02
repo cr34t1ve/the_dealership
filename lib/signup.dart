@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:the_dealership/onboarding.dart';
 
 import 'Pages/login.dart';
 import 'assistants/progressdialog.dart';
@@ -129,6 +130,35 @@ class SignUP extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 16),
                                 child: Icon(
+                                  Icons.alternate_email,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : const Color(0xff070606),
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  controller: emailTextEditingController,
+                                  onChanged: (value) {
+                                    _email = value;
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: "Email Address",
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 16),
+                                child: Icon(
                                   Icons.phone,
                                   color: isDarkMode
                                       ? Colors.white
@@ -150,34 +180,7 @@ class SignUP extends StatelessWidget {
                           ),
                         ),
 
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(right: 16),
-                                child: Icon(
-                                  Icons.alternate_email,
-                                  color: isDarkMode
-                                      ? Colors.white
-                                      : const Color(0xff070606),
-                                ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  controller: emailTextEditingController,
-                                  onChanged: (value) {
-                                    _email = value;
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: "Email Address",
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+
 
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -238,26 +241,26 @@ class SignUP extends StatelessWidget {
                             ),
                           ),
                           onTap: ()  {
-                            // if (nameTextEditingController.text.length < 0) {
-                            //   displayToast("Name must be atleast 3 characters.", context);
-                            // }
-                            // else if (!emailTextEditingController.text.contains("@")) {
-                            //   displayToast("Email address is not Valid", context);
-                            // }
+                            if (nameTextEditingController.text.length < 0) {
+                              displayToast("Name must be atleast 3 characters.", context);
+                            }
+                            else if (!emailTextEditingController.text.contains("@")) {
+                              displayToast("Email address is not Valid", context);
+                            }
+
+                            else if (phoneTextEditingController.text.isEmpty) {
+                              displayToast("PhoneNumber are mandatory", context);
+                            }
                             //
-                            // else if (phoneTextEditingController.text.isEmpty) {
-                            //   displayToast("PhoneNumber are mandatory", context);
-                            // }
-                            //
-                            // else if (passwordTextEditingController.text.length < 6) {
-                            //   displayToast("Password must be atleast 6 Characters", context);
-                            // }
-                            // else  {
+                            else if (passwordTextEditingController.text.length < 6) {
+                              displayToast("Password must be atleast 6 Characters", context);
+                            }
+                            else  {
                               Future.wait([registerNewUser(context),
                                 registerinfirestore(context)]);
 
                             }
-                         // },
+                          },
                         ),
                       ],
                     ),
@@ -343,7 +346,9 @@ class SignUP extends StatelessWidget {
 
       displayToast("Congratulation, your account has been created", context);
 
-      Navigator.pushNamed(context,  SignInScreen.idScreen);
+
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+          OnBoardingPage()), (Route<dynamic> route) => false);
 
     }
     else

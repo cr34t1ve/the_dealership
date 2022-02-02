@@ -27,7 +27,7 @@ class SignInScreen extends StatelessWidget {
             children: <Widget>[
               const Padding(
                 padding: EdgeInsets.only(top:15.0),
-                child: Text("DEALERSHIP"),
+                child: Text("DEALERSHIP",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),),
               ),
               Container(
                 margin: EdgeInsets.only(top: 10),
@@ -224,7 +224,8 @@ class SignInScreen extends StatelessWidget {
 
 
       if (firebaseUser != null) {
-        Navigator.pushReplacementNamed(context, homepage.idScreen);
+        Navigator.of(context).pushNamed(homepage.idScreen);
+
 
         displayToast("Logged-in As A Board Member",
             context);
