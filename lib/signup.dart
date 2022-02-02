@@ -10,6 +10,7 @@ import 'assistants/progressdialog.dart';
 import 'main.dart';
 
 class SignUP extends StatelessWidget {
+  static const String idScreen = "signUP";
 
   TextEditingController nameTextEditingController= TextEditingController();
   TextEditingController emailTextEditingController= TextEditingController();
@@ -237,26 +238,26 @@ class SignUP extends StatelessWidget {
                             ),
                           ),
                           onTap: ()  {
-                            if (nameTextEditingController.text.length < 0) {
-                              displayToast("Name must be atleast 3 characters.", context);
-                            }
-                            else if (!emailTextEditingController.text.contains("@")) {
-                              displayToast("Email address is not Valid", context);
-                            }
-
-                            else if (phoneTextEditingController.text.isEmpty) {
-                              displayToast("PhoneNumber are mandatory", context);
-                            }
-
-                            else if (passwordTextEditingController.text.length < 6) {
-                              displayToast("Password must be atleast 6 Characters", context);
-                            }
-                            else  {
+                            // if (nameTextEditingController.text.length < 0) {
+                            //   displayToast("Name must be atleast 3 characters.", context);
+                            // }
+                            // else if (!emailTextEditingController.text.contains("@")) {
+                            //   displayToast("Email address is not Valid", context);
+                            // }
+                            //
+                            // else if (phoneTextEditingController.text.isEmpty) {
+                            //   displayToast("PhoneNumber are mandatory", context);
+                            // }
+                            //
+                            // else if (passwordTextEditingController.text.length < 6) {
+                            //   displayToast("Password must be atleast 6 Characters", context);
+                            // }
+                            // else  {
                               Future.wait([registerNewUser(context),
                                 registerinfirestore(context)]);
 
                             }
-                          },
+                         // },
                         ),
                       ],
                     ),
@@ -330,7 +331,7 @@ class SignUP extends StatelessWidget {
       Map userDataMap={
         "name": nameTextEditingController.text.trim(),
         "email": emailTextEditingController.text.trim(),
-        //"phone": phoneTextEditingController.text.trim(),
+        "phone": phoneTextEditingController.text.trim(),
 
       };
       clients.child(firebaseUser!.uid).set(userDataMap);
