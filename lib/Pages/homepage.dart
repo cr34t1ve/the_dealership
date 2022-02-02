@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:the_dealership/Pages/fleet.dart';
+import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/rentals.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -660,8 +661,8 @@ class _homepageState extends State<homepage> {
               onPressed: () {
                 print('yes');
                 FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/login', (route) => false);
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                        SignInScreen()), (route) => false);
                 // Navigator.of(context).pop();
               },
             ),

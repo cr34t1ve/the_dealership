@@ -34,9 +34,9 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Car Rental App',
       home: SplashScreen(),
-
-         initialRoute:  SignInScreen.idScreen,
-      //initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
+         //
+         // initialRoute:  SignInScreen.idScreen,
+      initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
       routes: {
         SignUP.idScreen:(context) =>SignUP(),
         SignInScreen.idScreen:(context)=>SignInScreen(),
