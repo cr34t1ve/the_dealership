@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:the_dealership/Pages/forgotpassword.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
 import 'package:the_dealership/onboarding.dart';
@@ -41,8 +42,8 @@ class _AppState extends State<App> {
         SignUP.idScreen:(context) =>SignUP(),
         SignInScreen.idScreen:(context)=>SignInScreen(),
         homepage.idScreen:(context) =>homepage(),
-      OnBoardingPage.idScreen:(context) =>OnBoardingPage()
-
+      OnBoardingPage.idScreen:(context) =>OnBoardingPage(),
+        ForgotPassword.id:(context)=>ForgotPassword(),
       },
 
 

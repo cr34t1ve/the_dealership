@@ -5,11 +5,13 @@ import 'package:the_dealership/assistants/progressdialog.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../signup.dart';
+import 'forgotpassword.dart';
 // import 'signup.dart';
 
 
 class SignInScreen extends StatelessWidget {
   static const String idScreen = "Login";
+
 
   //ch
   late String _email, _password;
@@ -133,6 +135,22 @@ class SignInScreen extends StatelessWidget {
                             ],
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:8.0,left: 150,right: 1),
+                          child: FlatButton(
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                ForgotPassword.id,
+                              );
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                            ),
+                          ),
+                        ),
+
 
                         Padding(
                           padding: const EdgeInsets.all(30),
