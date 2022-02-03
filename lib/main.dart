@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,9 +15,35 @@ import 'package:firebase_database/firebase_database.dart';
 import 'Pages/fleet.dart';
 
 void main() async {
+
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const App());
+  runApp(App());
+
+  if(!kIsWeb){
+    WidgetsFlutterBinding.ensureInitialized();
+    Firebase.initializeApp();
+
+  }
+  else {
+    Firebase.initializeApp(
+
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyDdZMR7ARnEZlr6mEZe5Eik6ge0IWDH5vc",
+        appId: "1:54024417935:web:444acd27e1a2d84ee0f6fa",
+        messagingSenderId: "54024417935",
+        projectId: "votingumb",
+
+      ),
+
+    );
+  }
+
+  //
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // runApp(const App());
 }
 DatabaseReference clients = FirebaseDatabase.instance.ref().child("Clients");
 
