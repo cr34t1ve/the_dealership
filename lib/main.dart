@@ -13,8 +13,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 
 import 'Pages/fleet.dart';
-
-void main() async {
+Future<void> main() async {
 
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,15 +29,16 @@ void main() async {
     Firebase.initializeApp(
 
       options: const FirebaseOptions(
-        apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
-        appId: "1:829773441286:web:3b62d908c935717a49d687",
-        messagingSenderId: "829773441286",
+        apiKey:  "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
+        appId:"1:829773441286:web:3b62d908c935717a49d687",
+        messagingSenderId:  "829773441286",
         projectId: "thedealership-a0ac9",
 
       ),
 
     );
   }
+  runApp(App());
 
   //
   // WidgetsFlutterBinding.ensureInitialized();
@@ -63,8 +63,8 @@ class _AppState extends State<App> {
       title: 'Car Rental App',
       home: SplashScreen(),
          //
-         // initialRoute:  SignInScreen.idScreen,
-      initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
+         initialRoute:  SignInScreen.idScreen,
+     // initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
       routes: {
         SignUP.idScreen:(context) =>SignUP(),
         SignInScreen.idScreen:(context)=>SignInScreen(),
