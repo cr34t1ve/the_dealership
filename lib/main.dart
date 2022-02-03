@@ -30,10 +30,10 @@ void main() async {
     Firebase.initializeApp(
 
       options: const FirebaseOptions(
-        apiKey: "AIzaSyDdZMR7ARnEZlr6mEZe5Eik6ge0IWDH5vc",
-        appId: "1:54024417935:web:444acd27e1a2d84ee0f6fa",
-        messagingSenderId: "54024417935",
-        projectId: "votingumb",
+        apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
+        appId: "1:829773441286:web:3b62d908c935717a49d687",
+        messagingSenderId: "829773441286",
+        projectId: "thedealership-a0ac9",
 
       ),
 
