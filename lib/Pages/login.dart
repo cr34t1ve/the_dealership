@@ -245,7 +245,7 @@ class SignInScreen extends StatelessWidget {
         Navigator.of(context).pushNamed(homepage.idScreen);
 
 
-        displayToast("Logged-in As A Board Member",
+        displayToast("Logged-in ",
             context);
       } else {
         displayToast("Error: Cannot be signed in", context);
