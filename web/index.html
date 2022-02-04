@@ -46,37 +46,7 @@
 
 </head>
 <body>
-<script>
 
-const firebaseConfig = {
-
-  apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
-
-  authDomain: "thedealership-a0ac9.firebaseapp.com",
-
-  databaseURL: "https://thedealership-a0ac9-default-rtdb.firebaseio.com",
-
-  projectId: "thedealership-a0ac9",
-
-  storageBucket: "thedealership-a0ac9.appspot.com",
-
-  messagingSenderId: "829773441286",
-
-  appId: "1:829773441286:web:3b62d908c935717a49d687",
-
-  measurementId: "G-NJGN0C0FHT"
-
-};
-
-
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
-
-const analytics = getAnalytics(app);
-
-
-</script>
 
 
 
@@ -153,5 +123,39 @@ const analytics = getAnalytics(app);
       loadMainDartJs();
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+
+
+  <script>
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
+
+  authDomain: "thedealership-a0ac9.firebaseapp.com",
+
+  databaseURL: "https://thedealership-a0ac9-default-rtdb.firebaseio.com",
+
+  projectId: "thedealership-a0ac9",
+
+  storageBucket: "thedealership-a0ac9.appspot.com",
+
+  messagingSenderId: "829773441286",
+
+  appId: "1:829773441286:web:3b62d908c935717a49d687",
+
+  measurementId: "G-NJGN0C0FHT"
+
+};
+
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+
+const analytics = getAnalytics(app);
+
+
+</script>
 </body>
 </html>

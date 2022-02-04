@@ -14,37 +14,34 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'Pages/fleet.dart';
 Future<void> main() async {
-
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // runApp(App());
+
+  // if(!kIsWeb){
+  //   WidgetsFlutterBinding.ensureInitialized();
+  //   Firebase.initializeApp();
+  //
+  // }
+  // else {
+  Firebase.initializeApp(
+
+    options:  FirebaseOptions(
+      apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
+      appId: "1:829773441286:web:3b62d908c935717a49d687",
+      messagingSenderId: "829773441286",
+      projectId: "thedealership-a0ac9",
+
+    ),
+  );
+
   runApp(App());
-
-  if(!kIsWeb){
-    WidgetsFlutterBinding.ensureInitialized();
-    Firebase.initializeApp();
-
-  }
-  else {
-    Firebase.initializeApp(
-
-      options: const FirebaseOptions(
-        apiKey:  "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
-        appId:"1:829773441286:web:3b62d908c935717a49d687",
-        messagingSenderId:  "829773441286",
-        projectId: "thedealership-a0ac9",
-
-      ),
-
-    );
-  }
-  runApp(App());
-
+}
   //
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   // runApp(const App());
-}
+//}
 DatabaseReference clients = FirebaseDatabase.instance.ref().child("Clients");
 
 class App extends StatefulWidget {
