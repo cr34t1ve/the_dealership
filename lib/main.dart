@@ -13,9 +13,9 @@ import 'package:firebase_database/firebase_database.dart';
 
 
 import 'Pages/fleet.dart';
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await
   // runApp(App());
 
   // if(!kIsWeb){
@@ -60,8 +60,8 @@ class _AppState extends State<App> {
       title: 'Car Rental App',
       home: SplashScreen(),
          //
-         initialRoute:  SignInScreen.idScreen,
-     // initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
+         //initialRoute:  SignInScreen.idScreen,
+     initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
       routes: {
         SignUP.idScreen:(context) =>SignUP(),
         SignInScreen.idScreen:(context)=>SignInScreen(),
