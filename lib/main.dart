@@ -11,46 +11,38 @@ import 'package:the_dealership/signup.dart';
 import 'splash.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-
 import 'Pages/fleet.dart';
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await
-  // runApp(App());
 
-  // if(!kIsWeb){
-  //   WidgetsFlutterBinding.ensureInitialized();
-  //   Firebase.initializeApp();
-  //
-  // }
-  // else {
-  Firebase.initializeApp(
-
-    options:  FirebaseOptions(
-      apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
-      appId: "1:829773441286:web:3b62d908c935717a49d687",
-      messagingSenderId: "829773441286",
-      projectId: "thedealership-a0ac9",
-
-    ),
-  );
-
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(App());
-}
+
+  if (!kIsWeb) {
+    WidgetsFlutterBinding.ensureInitialized();
+    Firebase.initializeApp();
+  } else {
+    Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyBEdrfRGqF-spsLPyLrNJtrHJsLnu6lLVs",
+        appId: "1:829773441286:web:3b62d908c935717a49d687",
+        messagingSenderId: "829773441286",
+        projectId: "thedealership-a0ac9",
+      ),
+    );
+  }
+  runApp(App());
+
   //
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   // runApp(const App());
-//}
-DatabaseReference clients = FirebaseDatabase.instance.ref().child("Clients");
-
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
-  @override
-  _AppState createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+DatabaseReference clients = FirebaseDatabase.instance.ref().child("Clients");
+
+class App extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -59,19 +51,20 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Car Rental App',
       home: SplashScreen(),
-         //
-         //initialRoute:  SignInScreen.idScreen,
-     initialRoute: FirebaseAuth.instance.currentUser== null ? SignInScreen.idScreen: homepage.idScreen,
+      //
+      //initialRoute:  SignInScreen.idScreen,
+      initialRoute: FirebaseAuth.instance.currentUser == null
+          ? SignInScreen.idScreen
+          : homepage.idScreen,
       routes: {
-        SignUP.idScreen:(context) =>SignUP(),
-        SignInScreen.idScreen:(context)=>SignInScreen(),
-        homepage.idScreen:(context) =>homepage(),
-      OnBoardingPage.idScreen:(context) =>OnBoardingPage(),
-        ForgotPassword.id:(context)=>ForgotPassword(),
+        SignUP.idScreen: (context) => SignUP(),
+        SignInScreen.idScreen: (context) => SignInScreen(),
+        homepage.idScreen: (context) => homepage(),
+        OnBoardingPage.idScreen: (context) => OnBoardingPage(),
+        ForgotPassword.id: (context) => ForgotPassword(),
       },
-
-
     );
-
+    throw UnimplementedError();
   }
 }
+
