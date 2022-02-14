@@ -105,7 +105,7 @@ class _RentalPageState extends State<RentalPage> {
               ),
               ListTile(
                 leading: const Icon(
-                  Icons.aod,
+                  Icons.add,
                   size: 30,
                 ),
                 title: Text('Orders'),

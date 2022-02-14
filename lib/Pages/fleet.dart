@@ -105,7 +105,7 @@ class _fleetState extends State<Fleet> {
               ),
               ListTile(
                 leading: const Icon(
-                  Icons.aod,
+                  Icons.add,
                   size: 30,
                 ),
                 title: Text('Orders'),
