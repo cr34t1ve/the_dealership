@@ -62,20 +62,23 @@ class _homepageState extends State<homepage> {
               Column(
                 children: [
                   SizedBox(
-                    height: 210,
+                    height: 250,
                     child: DrawerHeader(
                       child: Container(
                         height: 500,
                         child: Column(children: const [
                           CircleAvatar(
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.black12,
                             radius: 50,
                             child: Text(
                               'Dealership',
                               style:
                                   TextStyle(fontSize: 15, color: Colors.black),
-                            ), //Text
+                            ),
+
+                            //Text
                           ),
+
                           Text(
                             'UserName',
                             style: TextStyle(fontSize: 15, color: Colors.black),
