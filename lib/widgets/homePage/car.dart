@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_dealership/Pages/details_page.dart';
 import 'package:the_dealership/data/cars.dart';
@@ -31,7 +30,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
             ),
             child: InkWell(
               onTap: () {
-                Get.to(DetailsPage(
+               DetailsPage(
                   carImage: cars[i]['carImage'],
                   carClass: cars[i]['carClass'],
                   carName: cars[i]['carName'],
@@ -41,7 +40,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                   carPrice: cars[i]['carPrice'],
                   carRating: cars[i]['carRating'],
                   isRotated: cars[i]['isRotated'],
-                ));
+                );
               },
               child: SingleChildScrollView(
 

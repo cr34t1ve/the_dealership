@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:the_dealership/Pages/fleet.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/rentals.dart';

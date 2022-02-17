@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicons/unicons.dart';
 
@@ -61,7 +60,7 @@ class _DetailsPageState extends State<DetailsPage> {
               width: size.width * 0.1,
               child: InkWell(
                 onTap: () {
-                  Get.back(); //go back to home page
+                // return back(); //go back to home page
                 },
                 child: Container(
                   decoration: BoxDecoration(

@@ -30,15 +30,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  get: 4.5.1
+#  get: 4.5.1
   unicons: ^2.0.2
-  google_fonts: ^2.2.0
+  google_fonts: 2.2.0
   firebase_auth:
   provider: ^6.0.2
   lottie: ^1.2.1
   introduction_screen: ^2.1.0
   cloud_firestore:
-  hexcolor: ^2.0.5
   carousel_slider: ^4.0.0
   fluttertoast:
   firebase_database:
