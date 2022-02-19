@@ -266,7 +266,7 @@ class _homepageState extends State<homepage> {
       ),
       extendBody: true,
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: buildBottomNavBar(1, size, isDarkMode),
+      //bottomNavigationBar: buildBottomNavBar(1, size, isDarkMode),
       body: Center(
         child: Container(
           height: size.height,
@@ -617,6 +617,33 @@ class _homepageState extends State<homepage> {
               ],
             ),
           ),
+        ),
+      ),
+
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(36.0),
+          ),
+          color: Colors.transparent,
+        ),
+        padding: const EdgeInsets.all(24),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Image.asset('assets/images/home.png'),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Image.asset('assets/images/plus.png'),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Image.asset('assets/profile_icon.png'),
+              onPressed: () {},
+            ),
+          ],
         ),
       ),
     );
