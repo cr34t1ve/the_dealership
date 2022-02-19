@@ -636,10 +636,46 @@ class _homepageState extends State<homepage> {
               icon: Image.asset('assets/images/home.png'),
               onPressed: () {},
             ),
+            // Add A Car
             IconButton(
               icon: Image.asset('assets/images/plus.png'),
               onPressed: () {
+                showModalBottomSheet(
+                    elevation: 10,
+                    backgroundColor: Colors.white12,
+                    context: context,
+                    builder: (context) => Container(
+                          width: 300,
+                          height: MediaQuery.of(context).size.height * 7.9,
+                          //color: Colors.white,
+                          alignment: Alignment.center,
 
+
+                        child: Padding(
+                          padding: const EdgeInsets.only(top:18.0,left: 90,right:50),
+                          child: Column(
+                            children: [
+
+                              Row(
+                                children: [
+                                  Text("ADD A CAR FOR RENT/ FOR SALE"),
+                                ],
+                              )
+
+                            ],
+
+
+                    ),
+                        ),
+
+                    decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                top: Radius.circular(36.0),
+                ),
+                color: Colors.white,
+                ),
+                )
+                );
               },
             ),
             IconButton(
