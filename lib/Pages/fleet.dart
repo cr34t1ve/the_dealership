@@ -38,7 +38,7 @@ class _fleetState extends State<Fleet> {
               
               children: [
                  SizedBox(
-                   height: 210,
+                   height: 270,
                    child: DrawerHeader(
 
                      child: Container(
