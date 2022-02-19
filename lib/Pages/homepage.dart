@@ -621,13 +621,14 @@ class _homepageState extends State<homepage> {
       ),
 
       bottomNavigationBar: Container(
+        height:90,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(36.0),
           ),
           color: Colors.transparent,
         ),
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -637,10 +638,12 @@ class _homepageState extends State<homepage> {
             ),
             IconButton(
               icon: Image.asset('assets/images/plus.png'),
-              onPressed: () {},
+              onPressed: () {
+
+              },
             ),
             IconButton(
-              icon: Image.asset('assets/profile_icon.png'),
+              icon: Image.asset('assets/images/profile.png'),
               onPressed: () {},
             ),
           ],
