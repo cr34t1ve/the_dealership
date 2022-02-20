@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:the_dealership/Pages/addvehicle.dart';
 import 'package:the_dealership/Pages/forgotpassword.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
@@ -61,6 +62,8 @@ class App extends StatelessWidget {
         homepage.idScreen: (context) => homepage(),
         OnBoardingPage.idScreen: (context) => OnBoardingPage(),
         ForgotPassword.id: (context) => ForgotPassword(),
+        addvehicle.idScreen: (context) => addvehicle(),
+
       },
     );
     throw UnimplementedError();

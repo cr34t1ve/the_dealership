@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:image_picker/image_picker.dart';
+import 'package:the_dealership/Pages/addvehicle.dart';
 import 'package:the_dealership/Pages/fleet.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/rentals.dart';
@@ -11,17 +17,40 @@ import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:unicons/unicons.dart';
 
+
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
   static const String idScreen = "homepage";
+
   @override
   _homepageState createState() => _homepageState();
 }
 
-class _homepageState extends State<homepage> {
+class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  String _image =
+      'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
+  String? selectedCarType;
+  String? value;
   bool drawerOpen = true;
+  late AnimationController loadingController;
+
+
+  @override
+  void initState() {
+    loadingController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..addListener(() { setState(() {}); });
+
+    super.initState();
+  }
+
+
+  String dropdownvalue = '';
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +107,6 @@ class _homepageState extends State<homepage> {
 
                             //Text
                           ),
-
                           Text(
                             'UserName',
                             style: TextStyle(fontSize: 15, color: Colors.black),
@@ -127,11 +155,9 @@ class _homepageState extends State<homepage> {
                 trailing: Icon(Icons.more_vert),
                 onTap: () {},
               ),
-
               const SizedBox(
                 height: 25,
               ),
-
               Column(children: [
                 ListTile(
                   onTap: () {
@@ -303,7 +329,6 @@ class _homepageState extends State<homepage> {
                         ),
                         //intro
 
-
                         //fleets
                         Container(
                           width: double.infinity,
@@ -312,22 +337,21 @@ class _homepageState extends State<homepage> {
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.02,
-
                                 ),
                                 child: Align(
                                   child: Text(
                                     'DEALERSHIP ',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.03,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
                               ),
-
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.00,
@@ -336,11 +360,12 @@ class _homepageState extends State<homepage> {
                                   child: Text(
                                     'Choose from our fleet ',
                                     textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        color: isDarkMode ? Colors.white : Colors.black,
-                                        fontSize: size.width * 0.04,
-                                        fontWeight: FontWeight.bold,
-
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
+                                      fontSize: size.width * 0.04,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
@@ -416,10 +441,11 @@ class _homepageState extends State<homepage> {
                                     "Fleet",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.04,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
@@ -474,58 +500,52 @@ class _homepageState extends State<homepage> {
                             top: size.height * 0.01,
                           ),
                         ),
-
                         Padding(
                           padding: EdgeInsets.only(
                             top: size.height * 0.01,
                             left: size.width * 0.04,
                             bottom: size.height * 0.025,
                           ),
-
                         ),
-
-
                         Container(
                           child: Column(
-
-
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.02,
-
                                 ),
                                 child: Align(
                                   child: Text(
                                     'DEALERSHIP ',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.03,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
                               ),
-
                               Padding(
-                              padding: EdgeInsets.only(
-                                top: size.height * 0.02,
-                              ),
-                              child: Align(
-                                child: Text(
-                                  'Rent A Car now',
-                                  textAlign: TextAlign.center,
+                                padding: EdgeInsets.only(
+                                  top: size.height * 0.02,
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    'Rent A Car now',
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.04,
                                       fontWeight: FontWeight.bold,
-
                                     ),
+                                  ),
                                 ),
                               ),
-                            ),
                               Container(
                                 margin: EdgeInsets.all(1),
                                 child: CarouselSlider.builder(
@@ -544,13 +564,15 @@ class _homepageState extends State<homepage> {
                                     return GestureDetector(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(15),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
                                             border: Border.all(
                                               color: Colors.white,
                                             )),
                                         //ClipRRect for image border radius
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           child: Image.asset(
                                             imageListrental[i],
                                             width: 600,
@@ -571,7 +593,7 @@ class _homepageState extends State<homepage> {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.of(context).push(
-                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                        // MaterialPageRoute(builder: (_) => SignInScreen()),
                                         MaterialPageRoute(
                                             builder: (_) => RentalPage()));
                                   },
@@ -579,7 +601,9 @@ class _homepageState extends State<homepage> {
                                     "Rentals",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.043,
                                     ),
                                   ),
@@ -587,11 +611,10 @@ class _homepageState extends State<homepage> {
                               ),
                             ],
                           ),
-
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
+                                const BorderRadius.all(Radius.circular(20)),
                             border: Border.all(
                               color: Colors.white12,
                             ),
@@ -601,12 +624,11 @@ class _homepageState extends State<homepage> {
                                 spreadRadius: 2,
                                 blurRadius: 7,
                                 offset:
-                                Offset(0, 3), // changes position of shadow
+                                    Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -621,7 +643,7 @@ class _homepageState extends State<homepage> {
       ),
 
       bottomNavigationBar: Container(
-        height:90,
+        height: 90,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(36.0),
@@ -640,42 +662,9 @@ class _homepageState extends State<homepage> {
             IconButton(
               icon: Image.asset('assets/images/plus.png'),
               onPressed: () {
-                showModalBottomSheet(
-                    elevation: 10,
-                    backgroundColor: Colors.white12,
-                    context: context,
-                    builder: (context) => Container(
-                          width: 300,
-                          height: MediaQuery.of(context).size.height * 7.9,
-                          //color: Colors.white,
-                          alignment: Alignment.center,
-
-
-                        child: Padding(
-                          padding: const EdgeInsets.only(top:18.0,left: 90,right:50),
-                          child: Column(
-                            children: [
-
-                              Row(
-                                children: [
-                                  Text("ADD A CAR FOR RENT/ FOR SALE"),
-                                ],
-                              )
-
-                            ],
-
-
-                    ),
-                        ),
-
-                    decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(
-                top: Radius.circular(36.0),
-                ),
-                color: Colors.white,
-                ),
-                )
-                );
+                Navigator.pushNamed(
+                    context,
+                addvehicle.idScreen);
               },
             ),
             IconButton(
@@ -704,7 +693,6 @@ class _homepageState extends State<homepage> {
     });
   }
 
-
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -729,8 +717,9 @@ class _homepageState extends State<homepage> {
               onPressed: () {
                 print('yes');
                 FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                        SignInScreen()), (route) => false);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => SignInScreen()),
+                    (route) => false);
                 // Navigator.of(context).pop();
               },
             ),
@@ -748,4 +737,11 @@ class _homepageState extends State<homepage> {
       },
     );
   }
+
+
+}
+displayToast(String message,BuildContext context)
+{
+  Fluttertoast.showToast(msg: message);
+
 }
