@@ -1,7 +1,12 @@
+import 'dart:io';
+
+import 'package:dotted_border/dotted_border.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:the_dealership/Pages/fleet.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/rentals.dart';
@@ -14,14 +19,35 @@ import 'package:unicons/unicons.dart';
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
   static const String idScreen = "homepage";
+
   @override
   _homepageState createState() => _homepageState();
 }
 
 class _homepageState extends State<homepage> {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  String _image =
+      'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
 
   bool drawerOpen = true;
+  late AnimationController loadingController;
+
+  File? _file;
+  PlatformFile? _platformFile;
+
+  selectFile() async {
+    final file = await FilePicker.platform.pickFiles(
+        type: FileType.custom, allowedExtensions: ['png', 'jpg', 'jpeg']);
+
+    if (file != null) {
+      setState(() {
+        _file = File(file.files.single.path!);
+        _platformFile = file.files.first;
+      });
+    }
+
+    loadingController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +104,6 @@ class _homepageState extends State<homepage> {
 
                             //Text
                           ),
-
                           Text(
                             'UserName',
                             style: TextStyle(fontSize: 15, color: Colors.black),
@@ -127,11 +152,9 @@ class _homepageState extends State<homepage> {
                 trailing: Icon(Icons.more_vert),
                 onTap: () {},
               ),
-
               const SizedBox(
                 height: 25,
               ),
-
               Column(children: [
                 ListTile(
                   onTap: () {
@@ -303,7 +326,6 @@ class _homepageState extends State<homepage> {
                         ),
                         //intro
 
-
                         //fleets
                         Container(
                           width: double.infinity,
@@ -312,22 +334,21 @@ class _homepageState extends State<homepage> {
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.02,
-
                                 ),
                                 child: Align(
                                   child: Text(
                                     'DEALERSHIP ',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.03,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
                               ),
-
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.00,
@@ -336,11 +357,12 @@ class _homepageState extends State<homepage> {
                                   child: Text(
                                     'Choose from our fleet ',
                                     textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        color: isDarkMode ? Colors.white : Colors.black,
-                                        fontSize: size.width * 0.04,
-                                        fontWeight: FontWeight.bold,
-
+                                    style: GoogleFonts.poppins(
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
+                                      fontSize: size.width * 0.04,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
@@ -416,10 +438,11 @@ class _homepageState extends State<homepage> {
                                     "Fleet",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.04,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
@@ -474,58 +497,52 @@ class _homepageState extends State<homepage> {
                             top: size.height * 0.01,
                           ),
                         ),
-
                         Padding(
                           padding: EdgeInsets.only(
                             top: size.height * 0.01,
                             left: size.width * 0.04,
                             bottom: size.height * 0.025,
                           ),
-
                         ),
-
-
                         Container(
                           child: Column(
-
-
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: size.height * 0.02,
-
                                 ),
                                 child: Align(
                                   child: Text(
                                     'DEALERSHIP ',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.03,
                                       fontWeight: FontWeight.bold,
-
                                     ),
                                   ),
                                 ),
                               ),
-
                               Padding(
-                              padding: EdgeInsets.only(
-                                top: size.height * 0.02,
-                              ),
-                              child: Align(
-                                child: Text(
-                                  'Rent A Car now',
-                                  textAlign: TextAlign.center,
+                                padding: EdgeInsets.only(
+                                  top: size.height * 0.02,
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    'Rent A Car now',
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.04,
                                       fontWeight: FontWeight.bold,
-
                                     ),
+                                  ),
                                 ),
                               ),
-                            ),
                               Container(
                                 margin: EdgeInsets.all(1),
                                 child: CarouselSlider.builder(
@@ -544,13 +561,15 @@ class _homepageState extends State<homepage> {
                                     return GestureDetector(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(15),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
                                             border: Border.all(
                                               color: Colors.white,
                                             )),
                                         //ClipRRect for image border radius
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           child: Image.asset(
                                             imageListrental[i],
                                             width: 600,
@@ -571,7 +590,7 @@ class _homepageState extends State<homepage> {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.of(context).push(
-                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                        // MaterialPageRoute(builder: (_) => SignInScreen()),
                                         MaterialPageRoute(
                                             builder: (_) => RentalPage()));
                                   },
@@ -579,7 +598,9 @@ class _homepageState extends State<homepage> {
                                     "Rentals",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                      color: isDarkMode ? Colors.white : Colors.black,
+                                      color: isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: size.width * 0.043,
                                     ),
                                   ),
@@ -587,11 +608,10 @@ class _homepageState extends State<homepage> {
                               ),
                             ],
                           ),
-
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
+                                const BorderRadius.all(Radius.circular(20)),
                             border: Border.all(
                               color: Colors.white12,
                             ),
@@ -601,12 +621,11 @@ class _homepageState extends State<homepage> {
                                 spreadRadius: 2,
                                 blurRadius: 7,
                                 offset:
-                                Offset(0, 3), // changes position of shadow
+                                    Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -621,7 +640,7 @@ class _homepageState extends State<homepage> {
       ),
 
       bottomNavigationBar: Container(
-        height:90,
+        height: 90,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(36.0),
@@ -640,45 +659,46 @@ class _homepageState extends State<homepage> {
             IconButton(
               icon: Image.asset('assets/images/plus.png'),
               onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    elevation: 10,
-                    backgroundColor: Colors.white12,
-                    context: context,
-                    builder: (context) => Container(
-                          width: 300,
-                          height: MediaQuery.of(context).size.height * 0.90,
-                          //color: Colors.white,
-                          alignment: Alignment.center,
-
-
-                        child: Padding(
-                          padding: const EdgeInsets.only(top:18.0,left: 50),
-                          child: Column(
-                            children: [
-
-                              Row(
-                                children: [
-                                  Text("ADD A CAR FOR RENT/ FOR SALE", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blueGrey ),),
-
-
-                                ],
-                              )
-
-                            ],
-
-
-                    ),
-                        ),
-
-                    decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(
-                top: Radius.circular(36.0),
-                ),
-                color: Colors.white,
-                ),
-                )
-                );
+                _bottomsheet();
+                // showModalBottomSheet(
+                //     isScrollControlled: true,
+                //     elevation: 10,
+                //     backgroundColor: Colors.white12,
+                //     context: context,
+                //     builder: (context) => Container(
+                //           width: 300,
+                //           height: MediaQuery.of(context).size.height * 0.90,
+                //           //color: Colors.white,
+                //           alignment: Alignment.center,
+                //
+                //
+                //         child: Padding(
+                //           padding: const EdgeInsets.only(top:18.0,left: 50),
+                //           child: Column(
+                //             children: [
+                //
+                //               Row(
+                //                 children: [
+                //                   Text("ADD A CAR FOR RENT/ FOR SALE", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blueGrey ),),
+                //
+                //
+                //                 ],
+                //               )
+                //
+                //             ],
+                //
+                //
+                //     ),
+                //         ),
+                //
+                //     decoration: BoxDecoration(
+                // borderRadius: BorderRadius.vertical(
+                // top: Radius.circular(36.0),
+                // ),
+                // color: Colors.white,
+                // ),
+                // )
+                // );
               },
             ),
             IconButton(
@@ -707,7 +727,6 @@ class _homepageState extends State<homepage> {
     });
   }
 
-
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -732,8 +751,9 @@ class _homepageState extends State<homepage> {
               onPressed: () {
                 print('yes');
                 FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                        SignInScreen()), (route) => false);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => SignInScreen()),
+                    (route) => false);
                 // Navigator.of(context).pop();
               },
             ),
@@ -749,6 +769,205 @@ class _homepageState extends State<homepage> {
           ],
         );
       },
+    );
+  }
+
+  Future<void> _bottomsheet() async {
+    showModalBottomSheet(
+
+        isScrollControlled: true,
+        elevation: 10,
+        backgroundColor: Colors.white12,
+        context: context,
+        builder: (context) => Container(
+          height:MediaQuery.of(context).size.height * 0.90,
+
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Image.network(
+                    _image,
+                    width: 300,
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    'Upload your file',
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.grey.shade800,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'File should be jpg, png',
+                    style: TextStyle(fontSize: 15, color: Colors.grey.shade500),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: selectFile,
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 40.0, vertical: 20.0),
+                        child: DottedBorder(
+                          borderType: BorderType.RRect,
+                          radius: Radius.circular(10),
+                          dashPattern: [10, 4],
+                          strokeCap: StrokeCap.round,
+                          color: Colors.blue.shade400,
+                          child: Container(
+                            width: double.infinity,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade50.withOpacity(.3),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.image,
+                                  color: Colors.blue,
+                                  size: 40,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  'Select your file',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey.shade400),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )),
+                  ),
+                  _platformFile != null
+                      ? Container(
+                          padding: EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Selected File',
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.black38,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black,
+                                          offset: Offset(0, 1),
+                                          blurRadius: 3,
+                                          spreadRadius: 2,
+                                        )
+                                      ]),
+                                  child: Row(
+                                    children: [
+                                      ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          child: Image.file(
+                                            _file!,
+                                            width: 70,
+                                          )),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              _platformFile!.name,
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              '${(_platformFile!.size / 1024).ceil()} KB',
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.grey.shade500),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Container(
+                                                height: 5,
+                                                clipBehavior: Clip.hardEdge,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: Colors.blue.shade50,
+                                                ),
+                                                child: LinearProgressIndicator(
+                                                  value:
+                                                      loadingController.value,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  )),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              MaterialButton(
+                                minWidth: double.infinity,
+                                height: 45,
+                                onPressed: () {},
+                                color: Colors.black,
+                                child: Text('Upload', style: TextStyle(color: Colors.white),),
+                              )
+                            ],
+                          )
+
+                  )
+
+                      : Container(),
+                  SizedBox(
+                    height: 150,
+                  ),
+                ],
+              ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(36.0),
+            ),
+            color: Colors.white,
+          ),
+            ),
+
+
+
+
+
+
     );
   }
 }
