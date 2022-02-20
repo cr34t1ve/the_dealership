@@ -25,7 +25,7 @@ class homepage extends StatefulWidget {
   _homepageState createState() => _homepageState();
 }
 
-class _homepageState extends State<homepage> {
+class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   String _image =
       'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
@@ -35,6 +35,15 @@ class _homepageState extends State<homepage> {
   late AnimationController loadingController;
 
 
+  @override
+  void initState() {
+    loadingController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..addListener(() { setState(() {}); });
+
+    super.initState();
+  }
 
 
   String dropdownvalue = '';
@@ -787,12 +796,7 @@ class _homepageState extends State<homepage> {
                             value: car,
                           );
                         }).toList(),
-                        onChanged: (newValue) {
-                          setState(()=> this.value = value!,);
 
-                          selectedCarType = newValue.toString();
-                          displayToast(selectedCarType!, context);
-                        },
                       ),
                     ],
                   ),
