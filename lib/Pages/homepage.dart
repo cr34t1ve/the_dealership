@@ -29,21 +29,19 @@ class _homepageState extends State<homepage> {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   String _image =
       'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
-
+  String? selectedCarType;
+  String? value;
   bool drawerOpen = true;
   late AnimationController loadingController;
 
 
-  late String selectedCarType;
-  late String value;
 
 
+  String dropdownvalue = '';
 
 
-  var uploadtype = [
-    "Fleet",
-    "Rental"
-  ];
+  var carTypesList = ['Fleet','Rental'];
+
   File? _file;
   PlatformFile? _platformFile;
 
@@ -672,45 +670,7 @@ class _homepageState extends State<homepage> {
               icon: Image.asset('assets/images/plus.png'),
               onPressed: () {
                 _bottomsheet();
-                // showModalBottomSheet(
-                //     isScrollControlled: true,
-                //     elevation: 10,
-                //     backgroundColor: Colors.white12,
-                //     context: context,
-                //     builder: (context) => Container(
-                //           width: 300,
-                //           height: MediaQuery.of(context).size.height * 0.90,
-                //           //color: Colors.white,
-                //           alignment: Alignment.center,
-                //
-                //
-                //         child: Padding(
-                //           padding: const EdgeInsets.only(top:18.0,left: 50),
-                //           child: Column(
-                //             children: [
-                //
-                //               Row(
-                //                 children: [
-                //                   Text("ADD A CAR FOR RENT/ FOR SALE", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blueGrey ),),
-                //
-                //
-                //                 ],
-                //               )
-                //
-                //             ],
-                //
-                //
-                //     ),
-                //         ),
-                //
-                //     decoration: BoxDecoration(
-                // borderRadius: BorderRadius.vertical(
-                // top: Radius.circular(36.0),
-                // ),
-                // color: Colors.white,
-                // ),
-                // )
-                // );
+
               },
             ),
             IconButton(
@@ -785,12 +745,9 @@ class _homepageState extends State<homepage> {
   }
 
   Future<void> _bottomsheet() async {
-
-
-
     showModalBottomSheet(
 
-        isScrollControlled: true,
+      isScrollControlled: true,
         elevation: 10,
         backgroundColor: Colors.white12,
         context: context,
@@ -810,32 +767,34 @@ class _homepageState extends State<homepage> {
                         color: Colors.grey.shade800,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownButton(
-                    iconSize: 40,
-                    hint: Text('Please choose Rev Type',
-                      style: TextStyle(color: Colors.grey)
 
-                      ,),
+                  Column(
+                    children: [
+                      DropdownButton(
+                        iconSize: 40,
+                        hint: Text('Please choose Rev Type',
+                          style: TextStyle(color: Colors.grey)
+
+                          ,),
 
 
-                    value: uploadtype,
-                    isExpanded: true,
-                    onChanged: (newValue) {
-                      setState(()=> this.value = value,);
+                        value: selectedCarType,
+                        isExpanded: true,
 
-                      uploadtype = uploadtype;
-                      displayToast(selectedCarType, context);
-                    },
-                    items: uploadtype.map((car) {
-                      return DropdownMenuItem(
-                        child: new Text(car),
-                        value: car,
-                      );
-                    }).toList(),
+                        items: carTypesList.map((car) {
+                          return DropdownMenuItem(
+                            child: new Text(car),
+                            value: car,
+                          );
+                        }).toList(),
+                        onChanged: (newValue) {
+                          setState(()=> this.value = value!,);
 
+                          selectedCarType = newValue.toString();
+                          displayToast(selectedCarType!, context);
+                        },
+                      ),
+                    ],
                   ),
 
                   Text(
