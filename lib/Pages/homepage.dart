@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:the_dealership/Pages/fleet.dart';
@@ -32,6 +33,17 @@ class _homepageState extends State<homepage> {
   bool drawerOpen = true;
   late AnimationController loadingController;
 
+
+  late String selectedCarType;
+  late String value;
+
+
+
+
+  var uploadtype = [
+    "Fleet",
+    "Rental"
+  ];
   File? _file;
   PlatformFile? _platformFile;
 
@@ -773,6 +785,9 @@ class _homepageState extends State<homepage> {
   }
 
   Future<void> _bottomsheet() async {
+
+
+
     showModalBottomSheet(
 
         isScrollControlled: true,
@@ -784,18 +799,12 @@ class _homepageState extends State<homepage> {
 
               child: Column(
                 children: <Widget>[
+
                   SizedBox(
-                    height: 100,
-                  ),
-                  Image.network(
-                    _image,
-                    width: 300,
-                  ),
-                  SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   Text(
-                    'Upload your file',
+                    'Add A Fleet or Rental',
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.grey.shade800,
@@ -804,6 +813,31 @@ class _homepageState extends State<homepage> {
                   SizedBox(
                     height: 10,
                   ),
+                  DropdownButton(
+                    iconSize: 40,
+                    hint: Text('Please choose Rev Type',
+                      style: TextStyle(color: Colors.grey)
+
+                      ,),
+
+
+                    value: uploadtype,
+                    isExpanded: true,
+                    onChanged: (newValue) {
+                      setState(()=> this.value = value,);
+
+                      uploadtype = uploadtype;
+                      displayToast(selectedCarType, context);
+                    },
+                    items: uploadtype.map((car) {
+                      return DropdownMenuItem(
+                        child: new Text(car),
+                        value: car,
+                      );
+                    }).toList(),
+
+                  ),
+
                   Text(
                     'File should be jpg, png',
                     style: TextStyle(fontSize: 15, color: Colors.grey.shade500),
@@ -943,16 +977,39 @@ class _homepageState extends State<homepage> {
                                 onPressed: () {},
                                 color: Colors.black,
                                 child: Text('Upload', style: TextStyle(color: Colors.white),),
-                              )
+                              ),
+
+
                             ],
                           )
+
+
 
                   )
 
                       : Container(),
                   SizedBox(
-                    height: 150,
+                    height: 10,
                   ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text("HEllo"),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text("Hello")
+                          ],
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
           decoration: BoxDecoration(
@@ -970,4 +1027,10 @@ class _homepageState extends State<homepage> {
 
     );
   }
+
+}
+displayToast(String message,BuildContext context)
+{
+  Fluttertoast.showToast(msg: message);
+
 }
