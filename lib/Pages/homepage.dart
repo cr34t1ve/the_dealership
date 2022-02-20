@@ -641,24 +641,27 @@ class _homepageState extends State<homepage> {
               icon: Image.asset('assets/images/plus.png'),
               onPressed: () {
                 showModalBottomSheet(
+                    isScrollControlled: true,
                     elevation: 10,
                     backgroundColor: Colors.white12,
                     context: context,
                     builder: (context) => Container(
                           width: 300,
-                          height: MediaQuery.of(context).size.height * 7.9,
+                          height: MediaQuery.of(context).size.height * 0.90,
                           //color: Colors.white,
                           alignment: Alignment.center,
 
 
                         child: Padding(
-                          padding: const EdgeInsets.only(top:18.0,left: 90,right:50),
+                          padding: const EdgeInsets.only(top:18.0,left: 50),
                           child: Column(
                             children: [
 
                               Row(
                                 children: [
-                                  Text("ADD A CAR FOR RENT/ FOR SALE"),
+                                  Text("ADD A CAR FOR RENT/ FOR SALE", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blueGrey ),),
+
+
                                 ],
                               )
 
