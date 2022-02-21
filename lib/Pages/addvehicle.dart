@@ -16,7 +16,7 @@ class _addvehicleState extends State<addvehicle> {
   String? _VehicledropDownValue;
   String? _RegiondropDownValue;
   String? _ConditiondropDownValue;
-
+  String? _TransmissiondropDownValue;
   final ImagePicker imagePicker = ImagePicker();
   List<XFile>? imageFileList = [];
 
@@ -25,9 +25,13 @@ class _addvehicleState extends State<addvehicle> {
 
   String error = '';
   bool loading = false;
-  String name = '';
-  String nickname = '';
-  String city = '';
+  String make = '';
+  String Color = '';
+  String Milleage = '';
+  String VIN = '';
+  String Description = '';
+  String Price = '';
+  String Name = '';
 
   void selectImages() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
@@ -189,7 +193,7 @@ class _addvehicleState extends State<addvehicle> {
                       border: OutlineInputBorder()),
                   validator: (val) => val!.isEmpty ? 'Enter your name' : null,
                   onChanged: (val) {
-                    setState(() => name = val);
+                    setState(() => make = val);
                   },
                 ),
               ),
@@ -200,11 +204,12 @@ class _addvehicleState extends State<addvehicle> {
                   decoration: InputDecoration(hintText: 'Colour',
                       border: OutlineInputBorder()),
                   onChanged: (val) {
-                    setState(() => nickname = val);
+                    setState(() => Color = val);
                   },
                 ),
               ),
 
+                //condition
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: DropdownButton(
@@ -240,21 +245,107 @@ class _addvehicleState extends State<addvehicle> {
                   },
                 ),
               ),
+
+              //transmission
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  hint: _TransmissiondropDownValue == null
+                      ? Text('Transmission*')
+                      : Text(
+                    _TransmissiondropDownValue!,
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  isExpanded: true,
+                  iconSize: 30.0,
+                  style: TextStyle(color: Colors.blue),
+                  items: [
+                    'AMT',
+                    'Automatic',
+                    'CVT',
+                    'Manual'
+
+
+
+                  ].map(
+                        (Transmissionval) {
+                      return DropdownMenuItem<String>(
+                        value: Transmissionval,
+                        child: Text(Transmissionval),
+                      );
+                    },
+                  ).toList(),
+                  onChanged: (Transmissionval) {
+                    setState(
+                          () {
+                        _TransmissiondropDownValue = Transmissionval.toString();
+                      },
+                    );
+                  },
+                ),
+              ),
+
+
               SizedBox(height: 20.0),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(hintText: 'City',
+                  decoration: InputDecoration(hintText: 'Mileage',
                       border: OutlineInputBorder()),
-                  validator: (val) => val!.isEmpty ? 'Enter your city' : null,
+                  validator: (val) => val!.isEmpty ? 'Enter your Mileage' : null,
                   onChanged: (val) {
-                    setState(() => city = val);
+                    setState(() => Milleage = val);
                   },
                 ),
               ),
               SizedBox(height: 20.0),
-
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(hintText: 'VIN',
+                      border: OutlineInputBorder()),
+                  validator: (val) => val!.isEmpty ? 'Enter your VIN' : null,
+                  onChanged: (val) {
+                    setState(() => VIN = val);
+                  },
+                ),
+              ),
               SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(hintText: 'Name',
+                      border: OutlineInputBorder()),
+                  validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
+                  onChanged: (val) {
+                    setState(() => Name = val);
+                  },
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(hintText: 'Price',
+                      border: OutlineInputBorder()),
+                  validator: (val) => val!.isEmpty ? 'Enter your Price' : null,
+                  onChanged: (val) {
+                    setState(() => Price = val);
+                  },
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(hintText: 'Description',
+                      border: OutlineInputBorder()),
+                  validator: (val) => val!.isEmpty ? 'Enter your Description' : null,
+                  onChanged: (val) {
+                    setState(() => Description = val);
+                  },
+                ),
+              ),
               RaisedButton(
                   color: Colors.black,
                   child: Text(
