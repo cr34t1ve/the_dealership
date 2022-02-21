@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -353,6 +355,7 @@ class _addvehicleState extends State<addvehicle> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () async {
+                    AddVehiclestofirestore(context);
 
                   }
               ),
@@ -370,5 +373,35 @@ class _addvehicleState extends State<addvehicle> {
             ),
           ),
         ));
+  }
+  Future<void>AddVehiclestofirestore(BuildContext context)async{
+    User? user = await FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await FirebaseFirestore.instance
+          .collection('NewVehicles')
+          .doc(make)
+          .set({
+        'Vehicle Category': _VehicledropDownValue,
+        'Region': _RegiondropDownValue,
+        'Make': make,
+        'Color': Color,
+        'Condition':_ConditiondropDownValue,
+        'Transmission':_TransmissiondropDownValue,
+        'Mileage': Milleage,
+        'VIN': VIN,
+        'Name': Name,
+        'Price': Price,
+        'Description': Description,
+
+
+      });
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) {
+      //     return SignInScreen();
+      //   }),
+      //);
+
+    }
   }
 }
