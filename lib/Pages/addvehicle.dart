@@ -33,7 +33,9 @@ class _addvehicleState extends State<addvehicle> {
   String VIN = '';
   String Description = '';
   String Price = '';
-  String Name = '';
+  User? Name =  FirebaseAuth.instance.currentUser;
+
+
 
   void selectImages() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
@@ -316,11 +318,11 @@ class _addvehicleState extends State<addvehicle> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(hintText: 'Name',
+                  decoration: InputDecoration(hintText: Name!.displayName,
                       border: OutlineInputBorder()),
                   validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
                   onChanged: (val) {
-                    setState(() => Name = val);
+                    setState(() => Name = val as User?);
                   },
                 ),
               ),

@@ -7,7 +7,7 @@ import 'package:the_dealership/Pages/forgotpassword.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/homepage.dart';
 import 'package:the_dealership/onboarding.dart';
-import 'package:the_dealership/signup.dart';
+import 'package:the_dealership/Pages/signup.dart';
 import 'splash.dart';
 import 'package:firebase_database/firebase_database.dart';
 

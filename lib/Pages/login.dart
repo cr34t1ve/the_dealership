@@ -4,7 +4,7 @@ import 'package:the_dealership/Pages/homepage.dart';
 import 'package:the_dealership/assistants/progressdialog.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../signup.dart';
+import 'signup.dart';
 import 'forgotpassword.dart';
 // import 'signup.dart';
 

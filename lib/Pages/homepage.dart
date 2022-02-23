@@ -34,7 +34,8 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   String? value;
   bool drawerOpen = true;
   late AnimationController loadingController;
-
+  User ?firebaseUser;
+  User? currentfirebaseUser;
 
   @override
   void initState() {
