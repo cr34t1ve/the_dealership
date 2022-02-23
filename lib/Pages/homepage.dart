@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,6 +38,9 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   User ?firebaseUser;
   User? currentfirebaseUser;
 
+
+  DatabaseReference userName = FirebaseDatabase.instance.reference().child(
+      "users").child(userId).child("path");
   @override
   void initState() {
     loadingController = AnimationController(
