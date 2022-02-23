@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 import 'package:image_picker/image_picker.dart';
 import 'package:the_dealership/Pages/addvehicle.dart';
 import 'package:the_dealership/Pages/fleet.dart';
@@ -39,8 +40,6 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   User? currentfirebaseUser;
 
 
-  DatabaseReference userName = FirebaseDatabase.instance.reference().child(
-      "users").child(userId).child("path");
   @override
   void initState() {
     loadingController = AnimationController(

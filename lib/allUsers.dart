@@ -8,12 +8,6 @@ void getCurrentOnlineUserInfo() async {
   String userId = firebaseUser.uid;
   DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
       "Clients").child(userId);
-
-  userRef.once().then((DataSnapshot dataSnapshot) {
-    if (dataSnapShot!.value != null) {
-      userCurrentInfo = Users.fromSnapshot(dataSnapshot);
-    }
-  });
 }
 class Users {
   String? key;
@@ -32,12 +26,12 @@ class Users {
 
   });
 
-  Users.fromSnapshot(DataSnapshot dataSnapShot) {
-    id = dataSnapShot.key;
-    email = dataSnapShot.value["email"];
-    name = dataSnapShot.value["name"];
-    phone = dataSnapShot.value["phone"];
-   // DriverStatus= dataSnapShot.value["DriverStatus"];
-  }
+  // Users.fromSnapshot(DataSnapshot dataSnapShot) {
+  //   id = dataSnapShot.key;
+  //   email = dataSnapShot.value["email"];
+  //   name = dataSnapShot.value["name"];
+  //   phone = dataSnapShot.value["phone"];
+  //  // DriverStatus= dataSnapShot.value["DriverStatus"];
+  // }
 }
 
