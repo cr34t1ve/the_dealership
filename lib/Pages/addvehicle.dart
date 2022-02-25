@@ -23,10 +23,13 @@ class addvehicle extends StatefulWidget {
 }
 
 class _addvehicleState extends State<addvehicle> {
+
   String? _VehicledropDownValue;
   String? _RegiondropDownValue;
   String? _ConditiondropDownValue;
   String? _TransmissiondropDownValue;
+
+
 
   final ImagePicker imagePicker = ImagePicker();
   List<XFile>? imageFileList = [];
@@ -41,12 +44,13 @@ class _addvehicleState extends State<addvehicle> {
   String VIN = '';
   String Description = '';
   String Price = '';
-  String Name = "";
+  String Name = '';
 
 
-  List<Clients>? Client;
+
+  late List<Clients> Client;
   Clients?  client;
-  DatabaseReference? clientdb;
+  late DatabaseReference clientdb;
 
 
   @override
@@ -56,23 +60,23 @@ class _addvehicleState extends State<addvehicle> {
     // user = users("","", "") ;
     final FirebaseDatabase database = FirebaseDatabase.instance;
     clientdb = database.reference().child('Ride Requests');
-    clientdb?.onChildAdded.listen(_onEntryAdded);
-    clientdb?.onChildChanged.listen(_onEntryChanged);
+    clientdb.onChildAdded.listen(_onEntryAdded);
+    clientdb.onChildChanged.listen(_onEntryChanged);
 
   }
 
   _onEntryAdded(dynamic event) {
     setState(() {
-      Client?.add(Clients.fromSnapshot(event.snapshot));
+      Client.add(Clients.fromSnapshot(event.snapshot));
     });
   }
 
   _onEntryChanged(dynamic event) {
-    var old = Client?.singleWhere((entry) {
+    var old = Client.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
     setState(() {
-      Client?[Client!.indexOf(old!)] = Clients.fromSnapshot(event.snapshot);
+      Client[Client.indexOf(old)] = Clients.fromSnapshot(event.snapshot);
     });
   }
   void selectImages() async {
@@ -86,9 +90,16 @@ class _addvehicleState extends State<addvehicle> {
 
   @override
   Widget build(BuildContext context) {
+
+    User firebaseUser =  FirebaseAuth.instance.currentUser!;
+    String userId = firebaseUser.uid.toString();
+    DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
+        "Clients").child(userId).child("name");
+
+    DatabaseReference name = userRef ;
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add to the Fleet or Rental'),
+          title: const Text('Add to the Fleet or Rental'),
           backgroundColor: Colors.black,
         ),
         body: SafeArea(
@@ -353,19 +364,21 @@ class _addvehicleState extends State<addvehicle> {
                 ),
               ),
               SizedBox(height: 20.0),
-              FirebaseAnimatedList(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(hintText: "Name",
-                        border: OutlineInputBorder()),
-                    validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
-                    onChanged: (val) {
-                      setState(() => Name = val );
-                    },
-                  ),
-                ),
-              ),
+
+
+
+
+       TextFormField(
+          decoration: const InputDecoration(hintText: ("Name"),
+              border: OutlineInputBorder()),
+          validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
+          onChanged: (val) {
+            setState(() => Name = val);
+          },
+        ),
+
+
+
               SizedBox(height: 20.0),
               Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -17,7 +17,7 @@ import 'configMaps.dart';
 
 
 class Clients {
-  String? key;
+  String ?key;
   String? id;
   String? email;
   String? name;
@@ -34,7 +34,7 @@ class Clients {
   });
 
   Clients.fromSnapshot(DataSnapshot dataSnapShot) {
-    id = dataSnapShot.key;
+    id = dataSnapShot.key!;
     var data = dataSnapShot.value as Map?;
     name = data?["client_name"];
     // client_name = dataSnapShot.value["client_name"];
