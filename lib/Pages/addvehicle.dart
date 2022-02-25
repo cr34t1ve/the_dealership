@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:the_dealership/configMaps.dart';
 
 class addvehicle extends StatefulWidget {
   const addvehicle({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _addvehicleState extends State<addvehicle> {
   String VIN = '';
   String Description = '';
   String Price = '';
-  User? Name =  FirebaseAuth.instance.currentUser;
+  String Name = "";
 
 
 
@@ -318,11 +319,11 @@ class _addvehicleState extends State<addvehicle> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(hintText: Name!.displayName,
+                  decoration: InputDecoration(hintText: "Name",
                       border: OutlineInputBorder()),
                   validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
                   onChanged: (val) {
-                    setState(() => Name = val as User?);
+                    setState(() => Name = val );
                   },
                 ),
               ),
