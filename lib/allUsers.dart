@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 import 'configMaps.dart';
 
- Future<void> getCurrentOnlineUserInfo() async {
+ Future<void> getCurrentOnlineUserInfo(BuildContext context) async {
    firebaseUser = await FirebaseAuth.instance.currentUser!;
    String userId = firebaseUser!.uid;
    DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
@@ -11,13 +12,21 @@ import 'configMaps.dart';
 
    final snapshot = await userRef.get(); // you
    if (snapshot.value != null) {
-     userCurrentInfo = Clients.fromSnapshot(snapshot) as User?;
+     userCurrentInfo = Clients.fromSnapshot(snapshot);
    }
+
+
  }
 
 
+User? firebaseUser;
+
+
+User? currentfirebaseUser;
+
+
 class Clients {
-  String ?key;
+  String?key;
   String? id;
   String? email;
   String? name;
@@ -36,7 +45,7 @@ class Clients {
   Clients.fromSnapshot(DataSnapshot dataSnapShot) {
     id = dataSnapShot.key!;
     var data = dataSnapShot.value as Map?;
-    name = data?["client_name"];
+    name = data?["name"];
     // client_name = dataSnapShot.value["client_name"];
     // client_phone = dataSnapShot.value["client_phone"];
     // created_at = dataSnapShot.value[" created_a"];
@@ -47,6 +56,9 @@ class Clients {
     // pickup_address=dataSnapShot.value["pickup_address"];
     // ride_type=dataSnapShot.value["ride_type"];
   }
+  Clients? _userInfo;
+
+  Clients? get userInfo => _userInfo;
 
 
 }

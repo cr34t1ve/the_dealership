@@ -13,11 +13,14 @@ import 'package:the_dealership/Pages/addvehicle.dart';
 import 'package:the_dealership/Pages/fleet.dart';
 import 'package:the_dealership/Pages/login.dart';
 import 'package:the_dealership/Pages/rentals.dart';
+import 'package:the_dealership/allUsers.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:unicons/unicons.dart';
+
+import '../configMaps.dart';
 
 
 class homepage extends StatefulWidget {
@@ -38,6 +41,8 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   late AnimationController loadingController;
   User ?firebaseUser;
   User? currentfirebaseUser;
+  String uName = "";
+  String uPhone = "";
 
 
   @override
@@ -47,7 +52,10 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
       duration: const Duration(seconds: 10),
     )..addListener(() { setState(() {}); });
 
+    uName.toString();
+
     super.initState();
+    getCurrentOnlineUserInfo(context);
   }
 
 
@@ -55,9 +63,9 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
 
 
 
-
   @override
   Widget build(BuildContext context) {
+
     final List<String> imageListfleet = [
       "assets/images/yaris.png",
       "assets/images/Lincoln.png",
@@ -80,6 +88,8 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
       //'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     ];
 
+
+
     Size size = MediaQuery.of(context).size; //check the size of device
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness ==
@@ -99,7 +109,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                     child: DrawerHeader(
                       child: Container(
                         height: 500,
-                        child: Column(children: const [
+                        child: Column(children:  [
                           CircleAvatar(
                             backgroundColor: Colors.black12,
                             radius: 50,
@@ -112,7 +122,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                             //Text
                           ),
                           Text(
-                            'UserName',
+                            "uName",
                             style: TextStyle(fontSize: 15, color: Colors.black),
                           ),
                           Padding(

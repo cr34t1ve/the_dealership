@@ -5,8 +5,8 @@ import 'allUsers.dart';
 String mapKey ="AIzaSyAoWcS8ouThAVE4whiZVTRwanEqq8nSMT8";
 
 
-User? firebaseUser;
-User? userCurrentInfo;
+Clients? firebaseUser;
+Clients? userCurrentInfo;
 
-User? currentfirebaseUser;
+Clients? currentfirebaseUser;
 
