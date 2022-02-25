@@ -3,12 +3,19 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'configMaps.dart';
 
-void getCurrentOnlineUserInfo() async {
-  User firebaseUser = FirebaseAuth.instance.currentUser!;
-  String userId = firebaseUser.uid;
-  DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
-      "Clients").child(userId);
-}
+ Future<void> getCurrentOnlineUserInfo() async {
+   firebaseUser = await FirebaseAuth.instance.currentUser!;
+   String userId = firebaseUser!.uid;
+   DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
+       "Clients").child(userId);
+
+   final snapshot = await userRef.get(); // you
+   if (snapshot.value != null) {
+     userCurrentInfo = Clients.fromSnapshot(snapshot) as User?;
+   }
+ }
+
+
 class Clients {
   String? key;
   String? id;

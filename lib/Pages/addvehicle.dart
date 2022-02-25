@@ -1,10 +1,13 @@
 
-import 'dart:html';
+
+
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,11 +27,11 @@ class _addvehicleState extends State<addvehicle> {
   String? _RegiondropDownValue;
   String? _ConditiondropDownValue;
   String? _TransmissiondropDownValue;
+
   final ImagePicker imagePicker = ImagePicker();
   List<XFile>? imageFileList = [];
 
   final _formKey = GlobalKey<FormState>();
-
 
   String error = '';
   bool loading = false;
@@ -58,13 +61,13 @@ class _addvehicleState extends State<addvehicle> {
 
   }
 
-  _onEntryAdded(Event event) {
+  _onEntryAdded(dynamic event) {
     setState(() {
       Client?.add(Clients.fromSnapshot(event.snapshot));
     });
   }
 
-  _onEntryChanged(Event event) {
+  _onEntryChanged(dynamic event) {
     var old = Client?.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
@@ -230,7 +233,7 @@ class _addvehicleState extends State<addvehicle> {
                 child: TextFormField(
                   decoration: InputDecoration(hintText: 'Make*',
                       border: OutlineInputBorder()),
-                  validator: (val) => val!.isEmpty ? 'Enter your name' : null,
+                  validator: (val) => val!.isEmpty ? 'Enter your Make' : null,
                   onChanged: (val) {
                     setState(() => make = val);
                   },
@@ -350,15 +353,17 @@ class _addvehicleState extends State<addvehicle> {
                 ),
               ),
               SizedBox(height: 20.0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  decoration: InputDecoration(hintText: "Name",
-                      border: OutlineInputBorder()),
-                  validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
-                  onChanged: (val) {
-                    setState(() => Name = val );
-                  },
+              FirebaseAnimatedList(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(hintText: "Name",
+                        border: OutlineInputBorder()),
+                    validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
+                    onChanged: (val) {
+                      setState(() => Name = val );
+                    },
+                  ),
                 ),
               ),
               SizedBox(height: 20.0),
