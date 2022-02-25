@@ -1,10 +1,14 @@
+
+import 'dart:html';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:the_dealership/allUsers.dart';
 import 'package:the_dealership/configMaps.dart';
 
 class addvehicle extends StatefulWidget {
@@ -37,7 +41,37 @@ class _addvehicleState extends State<addvehicle> {
   String Name = "";
 
 
+  List<Clients>? Client;
+  Clients?  client;
+  DatabaseReference? clientdb;
 
+
+  @override
+  void initState() {
+    super.initState();
+    Client = [];
+    // user = users("","", "") ;
+    final FirebaseDatabase database = FirebaseDatabase.instance;
+    clientdb = database.reference().child('Ride Requests');
+    clientdb?.onChildAdded.listen(_onEntryAdded);
+    clientdb?.onChildChanged.listen(_onEntryChanged);
+
+  }
+
+  _onEntryAdded(Event event) {
+    setState(() {
+      Client?.add(Clients.fromSnapshot(event.snapshot));
+    });
+  }
+
+  _onEntryChanged(Event event) {
+    var old = Client?.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+    });
+    setState(() {
+      Client?[Client!.indexOf(old!)] = Clients.fromSnapshot(event.snapshot);
+    });
+  }
   void selectImages() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
     if (selectedImages!.isNotEmpty) {
