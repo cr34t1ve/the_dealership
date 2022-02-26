@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'configMaps.dart';
 
- Future<void> getCurrentOnlineUserInfo(BuildContext context) async {
-   firebaseUser = await FirebaseAuth.instance.currentUser!;
+ Future<void> getUsername(BuildContext context) async {
+   FirebaseAuth auth = FirebaseAuth.instance;
+
+   final ref = FirebaseDatabase.instance.reference();
+   User? cuser = await auth.currentUser;
+   ref.child("Clients").child(cuser!.uid);
+   // firebaseUser = await FirebaseAuth.instance.currentUser!;
    String userId = firebaseUser!.uid;
    DatabaseReference userRef = FirebaseDatabase.instance.reference().child(
        "Clients").child(userId);
@@ -26,7 +31,7 @@ User? currentfirebaseUser;
 
 
 class Clients {
-  String?key;
+  String? key;
   String? id;
   String? email;
   String? name;

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +17,7 @@ import 'package:the_dealership/Pages/rentals.dart';
 import 'package:the_dealership/allUsers.dart';
 import 'package:the_dealership/widgets/bottom_nav_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:the_dealership/widgets/drawer.dart';
 import 'package:the_dealership/widgets/homePage/fleets.dart';
 import 'package:the_dealership/widgets/homePage/most_rented.dart';
 import 'package:unicons/unicons.dart';
@@ -31,7 +33,7 @@ class homepage extends StatefulWidget {
   _homepageState createState() => _homepageState();
 }
 
-class _homepageState extends State<homepage>with TickerProviderStateMixin  {
+class _homepageState extends State<homepage>with TickerProviderStateMixin {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   String _image =
       'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
@@ -39,33 +41,58 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
   String? value;
   bool drawerOpen = true;
   late AnimationController loadingController;
-  User ?firebaseUser;
-  User? currentfirebaseUser;
-  String uName = "";
-  String uPhone = "";
 
+  // final FirebaseAuth auth = FirebaseAuth.instance.currentUser!.uid as FirebaseAuth;
+  // late User user;
+  // late String currentUId;
+  // late String currentEmail;
+  // User ?firebaseUser;
+  // User? currentfirebaseUser;
+  // String uName = "";
+  // String uPhone = "";
 
+  //User user =  FirebaseAuth.instance.currentUser!;
   @override
   void initState() {
     loadingController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 10),
-    )..addListener(() { setState(() {}); });
+    )
+      ..addListener(() {
+        setState(() {});
+      });
 
-    uName.toString();
 
     super.initState();
-    getCurrentOnlineUserInfo(context);
+    _getUserName();
+    //
+    // user = auth.currentUser!;
+    // // Future.delayed(Duration(seconds: 5));
+    // // sleep(Duration(seconds: 5));
+    // currentUId = user.uid;
+    // currentEmail = user.email!;
   }
 
 
   String dropdownvalue = '';
 
 
+  Future<void> _getUserName() async {
+    FirebaseFirestore.instance
+        .collection('Users')
+        .doc((FirebaseAuth.instance.currentUser!).uid)
+        .get()
+        .then((value) {
+      setState(() {
+        var data = value as Map?;
+        //uName = data?['FullName'];
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
+    ;
     final List<String> imageListfleet = [
       "assets/images/yaris.png",
       "assets/images/Lincoln.png",
@@ -89,119 +116,125 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
     ];
 
 
-
-    Size size = MediaQuery.of(context).size; //check the size of device
-    var brightness = MediaQuery.of(context).platformBrightness;
+    Size size = MediaQuery
+        .of(context)
+        .size; //check the size of device
+    var brightness = MediaQuery
+        .of(context)
+        .platformBrightness;
     bool isDarkMode = brightness ==
         Brightness.dark; //check if device is in dark or light mode
 
     return Scaffold(
       key: scaffoldKey,
-      drawer: Drawer(
-        child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              Column(
-                children: [
-                  SizedBox(
-                    height: 250,
-                    child: DrawerHeader(
-                      child: Container(
-                        height: 500,
-                        child: Column(children:  [
-                          CircleAvatar(
-                            backgroundColor: Colors.black12,
-                            radius: 50,
-                            child: Text(
-                              'Dealership',
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.black),
-                            ),
+      drawer: MyDrawer(),
 
-                            //Text
-                          ),
-                          Text(
-                            "uName",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              'Email',
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.black),
-                            ),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.account_circle,
-                  size: 30,
-                ),
-                title: Text('Profile'),
-                subtitle: Text("View your account details here"),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.info,
-                  size: 30,
-                ),
-                title: Text('About'),
-                subtitle: Text("Learn about us "),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.add,
-                  size: 30,
-                ),
-                title: Text('Orders'),
-                subtitle: Text("This is the 1st item"),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              Column(children: [
-                ListTile(
-                  onTap: () {
-                    _showMyDialog();
-                  },
-                  leading: const Icon(
-                    Icons.logout,
-                    color: Colors.black,
-                  ),
-                  title: Text(
-                    "Sign Out",
-                    style: TextStyle(fontSize: 15.0),
-                  ),
-                ),
-              ]),
-              ListTile(
-                title: Text('Second item'),
-                onTap: () {},
-              ),
-            ]),
-      ),
+      // Drawer(
+      //   child: ListView(
+      //       // Important: Remove any padding from the ListView.
+      //       padding: EdgeInsets.zero,
+      //       children: <Widget>[
+      //         Column(
+      //           children: [
+      //             SizedBox(
+      //               height: 250,
+      //               child: DrawerHeader(
+      //                 child: Container(
+      //                   height: 500,
+      //                   child: Column(children:  [
+      //                     CircleAvatar(
+      //                       backgroundColor: Colors.black12,
+      //                       radius: 50,
+      //                       child: Text(
+      //                         'Dealership',
+      //                         style:
+      //                             TextStyle(fontSize: 15, color: Colors.black),
+      //                       ),
+      //
+      //                       //Text
+      //                     ),
+      //                     Text(
+      //                       "uname",
+      //                       style: TextStyle(fontSize: 15, color: Colors.black),
+      //                     ),
+      //                     Padding(
+      //                       padding: EdgeInsets.all(8.0),
+      //                       child: Text(
+      //                         'Email',
+      //                         style:
+      //                             TextStyle(fontSize: 15, color: Colors.black),
+      //                       ),
+      //                     ),
+      //                   ]),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //         ListTile(
+      //           leading: const Icon(
+      //             Icons.account_circle,
+      //             size: 30,
+      //           ),
+      //           title: Text('Profile'),
+      //           subtitle: Text("View your account details here"),
+      //           trailing: Icon(Icons.more_vert),
+      //           onTap: () {},
+      //         ),
+      //         ListTile(
+      //           leading: const Icon(
+      //             Icons.info,
+      //             size: 30,
+      //           ),
+      //           title: Text('About'),
+      //           subtitle: Text("Learn about us "),
+      //           trailing: Icon(Icons.more_vert),
+      //           onTap: () {},
+      //         ),
+      //         ListTile(
+      //           leading: const Icon(
+      //             Icons.add,
+      //             size: 30,
+      //           ),
+      //           title: Text('Orders'),
+      //           subtitle: Text("This is the 1st item"),
+      //           trailing: Icon(Icons.more_vert),
+      //           onTap: () {},
+      //         ),
+      //         const SizedBox(
+      //           height: 25,
+      //         ),
+      //         Column(children: [
+      //           ListTile(
+      //             onTap: () {
+      //               _showMyDialog();
+      //             },
+      //             leading: const Icon(
+      //               Icons.logout,
+      //               color: Colors.black,
+      //             ),
+      //             title: Text(
+      //               "Sign Out",
+      //               style: TextStyle(fontSize: 15.0),
+      //             ),
+      //           ),
+      //         ]),
+      //         ListTile(
+      //           title: Text('Second item'),
+      //           onTap: () {},
+      //         ),
+      //       ]),
+      // ),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
           shadowColor: Colors.transparent,
 
           backgroundColor:
-              isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
+          isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
           leading: Builder(
-              builder: (context) => IconButton(
+              builder: (context) =>
+                  IconButton(
                     icon: new Icon(
                       Icons.menu,
                       color: isDarkMode
@@ -419,14 +452,14 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                       child: Container(
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                             border: Border.all(
                                               color: Colors.white,
                                             )),
                                         //ClipRRect for image border radius
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                          BorderRadius.circular(15),
                                           child: Image.asset(
                                             imageListfleet[i],
                                             width: 2700,
@@ -447,7 +480,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.of(context).push(
-                                        // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
                                         MaterialPageRoute(
                                             builder: (_) => Fleet()));
                                   },
@@ -469,7 +502,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
+                            const BorderRadius.all(Radius.circular(20)),
                             border: Border.all(
                               color: Colors.white12,
                             ),
@@ -479,7 +512,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                 spreadRadius: 2,
                                 blurRadius: 7,
                                 offset:
-                                    Offset(0, 3), // changes position of shadow
+                                Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
@@ -579,14 +612,14 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                       child: Container(
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                             border: Border.all(
                                               color: Colors.white,
                                             )),
                                         //ClipRRect for image border radius
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                          BorderRadius.circular(15),
                                           child: Image.asset(
                                             imageListrental[i],
                                             width: 600,
@@ -607,7 +640,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.of(context).push(
-                                        // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
                                         MaterialPageRoute(
                                             builder: (_) => RentalPage()));
                                   },
@@ -628,7 +661,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
+                            const BorderRadius.all(Radius.circular(20)),
                             border: Border.all(
                               color: Colors.white12,
                             ),
@@ -638,7 +671,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
                                 spreadRadius: 2,
                                 blurRadius: 7,
                                 offset:
-                                    Offset(0, 3), // changes position of shadow
+                                Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
@@ -678,7 +711,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
               onPressed: () {
                 Navigator.pushNamed(
                     context,
-                addvehicle.idScreen);
+                    addvehicle.idScreen);
               },
             ),
             IconButton(
@@ -707,55 +740,68 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin  {
     });
   }
 
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sign Out'),
-          backgroundColor: Colors.white,
-          content: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Text('Are you certain you want to Sign Out?'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'Yes',
-                style: TextStyle(color: Colors.black),
+  Future getUsername() async {
+    final ref = FirebaseDatabase.instance.reference();
+    User cuser = await FirebaseAuth.instance.currentUser!;
+    final snapshot = await ref.get(); // you
+     ref.child('Clients').child(cuser.uid);
+    if (snapshot.value != null) {
+      userCurrentInfo = Clients.fromSnapshot(snapshot);
+      // ref.child('User_data').child(cuser.uid).once().then((DataSnapshot snap) {
+      //   final  String userName = snap.value['name'].toString();
+      //   print(userName);
+      //   return userName;
+      // });
+    }
+
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Sign Out'),
+            backgroundColor: Colors.white,
+            content: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Text('Are you certain you want to Sign Out?'),
+                ],
               ),
-              onPressed: () {
-                print('yes');
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => SignInScreen()),
-                    (route) => false);
-                // Navigator.of(context).pop();
-              },
             ),
-            TextButton(
-              child: Text(
-                'Cancel',
-                style: TextStyle(color: Colors.red),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  'Yes',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  print('yes');
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => SignInScreen()),
+                          (route) => false);
+                  // Navigator.of(context).pop();
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+              TextButton(
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(color: Colors.red),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
-
-}
-displayToast(String message,BuildContext context)
-{
-  Fluttertoast.showToast(msg: message);
+  displayToast(String message, BuildContext context) {
+    Fluttertoast.showToast(msg: message);
+  }
 
 }
