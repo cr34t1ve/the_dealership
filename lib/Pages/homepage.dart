@@ -129,102 +129,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin {
       key: scaffoldKey,
       drawer: MyDrawer(),
 
-      // Drawer(
-      //   child: ListView(
-      //       // Important: Remove any padding from the ListView.
-      //       padding: EdgeInsets.zero,
-      //       children: <Widget>[
-      //         Column(
-      //           children: [
-      //             SizedBox(
-      //               height: 250,
-      //               child: DrawerHeader(
-      //                 child: Container(
-      //                   height: 500,
-      //                   child: Column(children:  [
-      //                     CircleAvatar(
-      //                       backgroundColor: Colors.black12,
-      //                       radius: 50,
-      //                       child: Text(
-      //                         'Dealership',
-      //                         style:
-      //                             TextStyle(fontSize: 15, color: Colors.black),
-      //                       ),
-      //
-      //                       //Text
-      //                     ),
-      //                     Text(
-      //                       "uname",
-      //                       style: TextStyle(fontSize: 15, color: Colors.black),
-      //                     ),
-      //                     Padding(
-      //                       padding: EdgeInsets.all(8.0),
-      //                       child: Text(
-      //                         'Email',
-      //                         style:
-      //                             TextStyle(fontSize: 15, color: Colors.black),
-      //                       ),
-      //                     ),
-      //                   ]),
-      //                 ),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //         ListTile(
-      //           leading: const Icon(
-      //             Icons.account_circle,
-      //             size: 30,
-      //           ),
-      //           title: Text('Profile'),
-      //           subtitle: Text("View your account details here"),
-      //           trailing: Icon(Icons.more_vert),
-      //           onTap: () {},
-      //         ),
-      //         ListTile(
-      //           leading: const Icon(
-      //             Icons.info,
-      //             size: 30,
-      //           ),
-      //           title: Text('About'),
-      //           subtitle: Text("Learn about us "),
-      //           trailing: Icon(Icons.more_vert),
-      //           onTap: () {},
-      //         ),
-      //         ListTile(
-      //           leading: const Icon(
-      //             Icons.add,
-      //             size: 30,
-      //           ),
-      //           title: Text('Orders'),
-      //           subtitle: Text("This is the 1st item"),
-      //           trailing: Icon(Icons.more_vert),
-      //           onTap: () {},
-      //         ),
-      //         const SizedBox(
-      //           height: 25,
-      //         ),
-      //         Column(children: [
-      //           ListTile(
-      //             onTap: () {
-      //               _showMyDialog();
-      //             },
-      //             leading: const Icon(
-      //               Icons.logout,
-      //               color: Colors.black,
-      //             ),
-      //             title: Text(
-      //               "Sign Out",
-      //               style: TextStyle(fontSize: 15.0),
-      //             ),
-      //           ),
-      //         ]),
-      //         ListTile(
-      //           title: Text('Second item'),
-      //           onTap: () {},
-      //         ),
-      //       ]),
-      // ),
+
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
@@ -531,153 +436,143 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin {
                     left: size.width * 0.05,
                     right: size.width * 0.05,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(15),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: size.height * 0.01,
+                        ),
                       ),
-                      color: isDarkMode
-                          ? const Color(0xff070606)
-                          : Colors.white, //section bg color
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.01,
-                          ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: size.height * 0.01,
+                          left: size.width * 0.04,
+                          bottom: size.height * 0.025,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.01,
-                            left: size.width * 0.04,
-                            bottom: size.height * 0.025,
-                          ),
-                        ),
-                        Container(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: size.height * 0.02,
-                                ),
-                                child: Align(
-                                  child: Text(
-                                    'DEALERSHIP ',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.poppins(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      fontSize: size.width * 0.03,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: size.height * 0.02,
+                              ),
+                              child: Align(
+                                child: Text(
+                                  'DEALERSHIP ',
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.poppins(
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: size.width * 0.03,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: size.height * 0.02,
-                                ),
-                                child: Align(
-                                  child: Text(
-                                    'Rent A Car now',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      fontSize: size.width * 0.04,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: size.height * 0.02,
+                              ),
+                              child: Align(
+                                child: Text(
+                                  'Rent A Car now',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: size.width * 0.04,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.all(1),
-                                child: CarouselSlider.builder(
-                                  itemCount: imageListrental.length,
-                                  options: CarouselOptions(
-                                    enlargeCenterPage: true,
-                                    height: 230,
-                                    autoPlay: true,
-                                    autoPlayInterval: Duration(seconds: 3),
-                                    reverse: false,
-                                    aspectRatio: 5.0,
-                                  ),
-                                  itemBuilder: (context, i, id) {
-                                    //for onTap to redirect to another screen
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(1),
+                              child: CarouselSlider.builder(
+                                itemCount: imageListrental.length,
+                                options: CarouselOptions(
+                                  enlargeCenterPage: true,
+                                  height: 230,
+                                  autoPlay: true,
+                                  autoPlayInterval: Duration(seconds: 3),
+                                  reverse: false,
+                                  aspectRatio: 5.0,
+                                ),
+                                itemBuilder: (context, i, id) {
+                                  //for onTap to redirect to another screen
 
-                                    return GestureDetector(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius.circular(15),
-                                            border: Border.all(
-                                              color: Colors.white,
-                                            )),
-                                        //ClipRRect for image border radius
-                                        child: ClipRRect(
+                                  return GestureDetector(
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                           borderRadius:
                                           BorderRadius.circular(15),
-                                          child: Image.asset(
-                                            imageListrental[i],
-                                            width: 600,
-                                            // fit: BoxFit.cover,
-                                          ),
+                                          border: Border.all(
+                                            color: Colors.white,
+                                          )),
+                                      //ClipRRect for image border radius
+                                      child: ClipRRect(
+                                        borderRadius:
+                                        BorderRadius.circular(15),
+                                        child: Image.asset(
+                                          imageListrental[i],
+                                          width: 600,
+                                          // fit: BoxFit.cover,
                                         ),
                                       ),
-                                      onTap: () {
-                                        var url = imageListrental[i];
-                                        print(url.toString());
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                      // MaterialPageRoute(builder: (_) => SignInScreen()),
-                                        MaterialPageRoute(
-                                            builder: (_) => RentalPage()));
-                                  },
-                                  child: Text(
-                                    "Rentals",
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      fontSize: size.width * 0.043,
                                     ),
+                                    onTap: () {
+                                      var url = imageListrental[i];
+                                      print(url.toString());
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    // MaterialPageRoute(builder: (_) => SignInScreen()),
+                                      MaterialPageRoute(
+                                          builder: (_) => RentalPage()));
+                                },
+                                child: Text(
+                                  "Rentals",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: size.width * 0.043,
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                            border: Border.all(
-                              color: Colors.white12,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 7,
-                                offset:
-                                Offset(0, 3), // changes position of shadow
-                              ),
-                            ],
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(20)),
+                          border: Border.all(
+                            color: Colors.white12,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset:
+                              Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 // buildTopBrands(size, isDarkMode),

@@ -61,139 +61,102 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          //Drawer Header
-          DrawerHeader(
+
+        child: ListView(
+            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                // Text(
-                //   //uName,
-                //   style: TextStyle(
-                //       fontSize: 28.0,
-                //       color: Colors.black),
-                // ),
-                SizedBox(
-                  height: 6.0,
-                ),
-                // Text(
-                //   uPhone,
-                //   style: TextStyle(
-                //       fontSize: 18.0,
-                //       color: Colors.black),
-                // ),
-                SizedBox(
-                  height: 6.0,
-                ),
-              ],
-            ),
-          ),
-          Column(children: [
-            ListTile(
-              onTap: () {
-                Navigator.pushNamed(context, '/profile');
-              },
-              isThreeLine: false,
-              dense: true,
-              leading: const Icon(
-                Icons.person,
-                color: Colors.black,
+            children: <Widget>[
+              Column(
+                children: [
+                  SizedBox(
+                    height: 250,
+                    child: DrawerHeader(
+                      child: Container(
+                        height: 500,
+                        child: Column(children:  [
+                          CircleAvatar(
+                            backgroundColor: Colors.black12,
+                            radius: 50,
+                            child: Text(
+                              'Dealership',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
+                            ),
+
+                            //Text
+                          ),
+                          Text(
+                            "uname",
+                            style: TextStyle(fontSize: 15, color: Colors.black),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'Email',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              title: Text(
-                "Visit Profile",
-                style: TextStyle(fontSize: 15.0),
-              ),
-              subtitle: Text("Personal Details"),
-              trailing: Icon(
-                Icons.keyboard_arrow_right_rounded,
-                color: Colors.black,
-              ),
-            ),
-            Container(
-                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                child: Divider(
-                  color: Colors.black.withOpacity(0.5),
-                )),
-            Column(children: [
               ListTile(
-                onTap: () {
-                  Navigator.pushNamed(context, '/history');
-                },
-                dense: true,
-                leading: Icon(
-                  Icons.history,
-                  color: Colors.black,
+                leading: const Icon(
+                  Icons.account_circle,
+                  size: 30,
                 ),
-                title: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/history');
-                    },
-                    child: Text(
-                      "Delivery History",
-                      style: TextStyle(fontSize: 15.0),
-                    )),
-                subtitle: Text("Keep Track of all Deliveries"),
-                trailing: Icon(
-                  Icons.keyboard_arrow_right_rounded,
-                  color: Colors.black,
-                ),
+                title: Text('Profile'),
+                subtitle: Text("View your account details here"),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
               ),
-              Container(
-                  margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                  child: Divider(
-                    color: Colors.black.withOpacity(0.5),
-                  )),
+              ListTile(
+                leading: const Icon(
+                  Icons.info,
+                  size: 30,
+                ),
+                title: Text('About'),
+                subtitle: Text("Learn about us "),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.add,
+                  size: 30,
+                ),
+                title: Text('Orders'),
+                subtitle: Text("This is the 1st item"),
+                trailing: Icon(Icons.more_vert),
+                onTap: () {},
+              ),
+              const SizedBox(
+                height: 25,
+              ),
               Column(children: [
                 ListTile(
                   onTap: () {
-                    Navigator.pushNamed(context, '/about');
+                    _showMyDialog();
                   },
-                  dense: true,
-                  leading: Icon(
-                    Icons.info,
+                  leading: const Icon(
+                    Icons.logout,
                     color: Colors.black,
                   ),
                   title: Text(
-                    "About",
+                    "Sign Out",
                     style: TextStyle(fontSize: 15.0),
-                  ),
-                  subtitle: Text("Terms & Conditions, Privacy Policy"),
-                  trailing: Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    color: Colors.black,
                   ),
                 ),
               ]),
-            ]),
-          ]),
-          Spacer(),
-
-          SafeArea(
-            bottom: true,
-            child: Column(children: [
               ListTile(
-                onTap: () {
-                  _showMyDialog();
-                },
-                dense: true,
-                leading: Icon(
-                  Icons.logout,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  "Sign Out",
-                  style: TextStyle(fontSize: 15.0),
-                ),
+                title: Text('Second item'),
+                onTap: () {},
               ),
-              SizedBox(
-                height: getProportionateScreenHeight(25.0),
-              )
             ]),
-          ),
-        ],
-      ),
-    );
+      );
+
   }
 }

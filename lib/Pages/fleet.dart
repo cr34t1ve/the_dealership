@@ -47,52 +47,8 @@ class _fleetState extends State<Fleet> {
                       size: size.height * 0.025,
                     ),
                     onPressed: () => Scaffold.of(context).openDrawer(),
-                    // ),
-                    //       bottomOpacity: 0.0,
-                    //       elevation: 0.0,
-                    //       shadowColor: Colors.transparent,
-                    //       backgroundColor:
-                    //           isDarkMode ? const Color(0xff06090d) : const Color(0xfff8f8f8),
-                    //       //appbar bg color
-                    //       leading: Padding(
-                    //         padding: EdgeInsets.only(
-                    //           left: size.width * 0.05,
-                    //         ),
-                    //         child: SizedBox(
-                    //           height: size.width * 0.1,
-                    //           width: size.width * 0.1,
-                    //
-                    //
-                    //          child: Container(
-                    //                 decoration: BoxDecoration(
-                    //                   color: isDarkMode
-                    //                       ? const Color(0xff070606)
-                    //                       : Colors.white, //icon bg color
-                    //                   borderRadius: const BorderRadius.all(
-                    //                     Radius.circular(
-                    //                       10,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //
-                    //
-                    //                   child: IconButton(
-                    //
-                    //
-                    //
-                    //                     icon:
-                    //                     Icon(
-                    //                       UniconsLine.bars,
-                    //                       color: isDarkMode
-                    //                           ? Colors.white
-                    //                           : Colors.black, //icon bg color
-                    //                       size: size.height * 0.025,
-                    //                     ),
-                    //             onPressed: ()=> Scaffold.of(context).openDrawer(),
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //        ),
+
+
                   )),
 
           automaticallyImplyLeading: false,
@@ -113,37 +69,12 @@ class _fleetState extends State<Fleet> {
           //   width: size.width * 0.35,
           // ),
           centerTitle: true,
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                right: size.width * 0.05,
-              ),
-              child: SizedBox(
-                height: size.width * 0.1,
-                width: size.width * 0.1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? const Color(0xff070606)
-                        : Colors.white, //icon bg color
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: Icon(
-                    UniconsLine.toggle_on,
-                    color: isDarkMode ? Colors.white : Colors.black,
-                    size: size.height * 0.025,
-                  ),
-                ),
-              ),
-            ),
-          ],
+
         ),
       ),
       extendBody: true,
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: buildBottomNavBar(1, size, isDarkMode),
+
       body: Center(
         child: Container(
           height: size.height,
