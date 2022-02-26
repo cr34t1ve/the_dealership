@@ -435,6 +435,7 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin {
                     top: size.height * 0.01,
                     left: size.width * 0.05,
                     right: size.width * 0.05,
+                    bottom: size.height*0.01,
                   ),
                   child: Column(
                     children: [
@@ -585,8 +586,8 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin {
       ),
 
       bottomNavigationBar: Container(
-        height: 90,
-        decoration: BoxDecoration(
+        height: 60,
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(36.0),
           ),

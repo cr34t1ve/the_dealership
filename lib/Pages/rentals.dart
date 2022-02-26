@@ -29,96 +29,7 @@ class _RentalPageState extends State<RentalPage> {
 
     return Scaffold(
       key: scaffoldKey,
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              Column(
-
-                children: [
-                  SizedBox(
-                    height: 210,
-                    child: DrawerHeader(
-
-                      child: Container(
-                        height:500,
-
-
-                        child: Column(
-
-                            children:const [
-
-                              CircleAvatar(
-                                backgroundColor: Colors.blue,
-                                radius: 50,
-                                child: Text(
-                                  'Dealership',
-                                  style: TextStyle(fontSize: 15, color: Colors.black),
-                                ), //Text
-                              ),
-                              Text(
-                                'UserName',
-                                style: TextStyle(fontSize: 15, color: Colors.black),
-                              ),
-
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Email',
-                                  style: TextStyle(fontSize: 15, color: Colors.black),
-                                ),
-                              ),
-                            ]
-
-                        ),
-
-
-                      ),
-
-
-
-                    ),
-                  ),
-                ],
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.account_circle,
-                  size: 30,
-                ),
-                title: Text('Profile'),
-                subtitle: Text("View your account details here"),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-
-              ListTile(
-                leading: const Icon(
-                  Icons.info,
-                  size: 30,
-                ),
-                title: Text('About'),
-                subtitle: Text("Learn about us "),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.add,
-                  size: 30,
-                ),
-                title: Text('Orders'),
-                subtitle: Text("This is the 1st item"),
-                trailing: Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Text('Second item'),
-                onTap: () {},
-              ),
-            ]),
-      ),
+      drawer: MyDrawer(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
@@ -202,37 +113,11 @@ class _RentalPageState extends State<RentalPage> {
           //   width: size.width * 0.35,
           // ),
           centerTitle: true,
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                right: size.width * 0.05,
-              ),
-              child: SizedBox(
-                height: size.width * 0.1,
-                width: size.width * 0.1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? const Color(0xff070606)
-                        : Colors.white, //icon bg color
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: Icon(
-                    UniconsLine.toggle_on,
-                    color: isDarkMode ? Colors.white : Colors.black,
-                    size: size.height * 0.025,
-                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
       ),
       extendBody: true,
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: buildBottomNavBar(1, size, isDarkMode),
+
       body: Center(
         child: Container(
           height: size.height,
@@ -361,7 +246,7 @@ class _RentalPageState extends State<RentalPage> {
                 ),
                 // buildTopBrands(size, isDarkMode),
                 buildMostRented(size, isDarkMode),
-                buildFleets(size, isDarkMode),
+
               ],
             ),
           ),
