@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:the_dealership/assistants/size_config.dart';
+import 'package:the_dealership/configMaps.dart';
 
 class MyDrawer extends StatefulWidget {
 // const MyDrawer({ required Key key}) : super(key: key);
@@ -11,9 +13,11 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   User? user = FirebaseAuth.instance.currentUser;
-  String? get name => user!.displayName?.trim();
+  String get name => user!.displayName.toString();
   String? get email => user!.email.toString();
-  String?  displayName = FirebaseAuth.instance.currentUser!.displayName;
+  //String?  displayName = FirebaseDatabase.instance.reference().child("Clients").child(uid!).child("name") as String?;
+
+  static String? get uid => firebaseUser!.id;
 
 
   Future getName() async {
@@ -21,7 +25,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
     if (user != null) {
       // Name, email address, and profile photo Url
-      String name = user.displayName!.trim();
+      String name = user.uid.trim();
       String email = user.email!.trim();
       //Uri photoUrl = user.getPhotoUrl();
 
@@ -108,7 +112,7 @@ class _MyDrawerState extends State<MyDrawer> {
                           Padding(
                             padding: const EdgeInsets.all(1.0),
                             child: Text(
-                              displayName!,
+                             name,
                               style: TextStyle(fontSize: 15, color: Colors.black),
                             ),
                           ),
