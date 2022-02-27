@@ -10,10 +10,29 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  User? user = FirebaseAuth.instance.currentUser;
+  String? get name => user!.displayName.toString();
+  String? get email => user!.email.toString();
 
 
+  Future getUserDetails() async {
+    User? user = FirebaseAuth.instance.currentUser;
 
+    if (user != null) {
+      // Name, email address, and profile photo Url
+      String name = user.displayName!.trim();
+      String email = user.email!.trim();
+      //Uri photoUrl = user.getPhotoUrl();
 
+      // Check if user's email is verified
+      bool emailVerified = user.emailVerified;
+
+      // The user's ID, unique to the Firebase project. Do NOT use this value to
+      // authenticate with your backend server, if you have one. Use
+      // FirebaseUser.getIdToken() instead.
+      String uid = user.uid;
+    }
+  }
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -86,13 +105,13 @@ class _MyDrawerState extends State<MyDrawer> {
                             //Text
                           ),
                           Text(
-                            "uname",
+                            name!,
                             style: TextStyle(fontSize: 15, color: Colors.black),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              'Email',
+                              email!,
                               style:
                                   TextStyle(fontSize: 15, color: Colors.black),
                             ),

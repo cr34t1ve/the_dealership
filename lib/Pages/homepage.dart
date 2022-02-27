@@ -41,17 +41,24 @@ class _homepageState extends State<homepage>with TickerProviderStateMixin {
   String? value;
   bool drawerOpen = true;
   late AnimationController loadingController;
+  Future getUserDetails() async {
+    User? user = FirebaseAuth.instance.currentUser;
 
-  // final FirebaseAuth auth = FirebaseAuth.instance.currentUser!.uid as FirebaseAuth;
-  // late User user;
-  // late String currentUId;
-  // late String currentEmail;
-  // User ?firebaseUser;
-  // User? currentfirebaseUser;
-  // String uName = "";
-  // String uPhone = "";
+    if (user != null) {
+      // Name, email address, and profile photo Url
+      String name = user.displayName!.trim();
+      String email = user.email!.trim();
+      //Uri photoUrl = user.getPhotoUrl();
 
-  //User user =  FirebaseAuth.instance.currentUser!;
+      // Check if user's email is verified
+      bool emailVerified = user.emailVerified;
+
+      // The user's ID, unique to the Firebase project. Do NOT use this value to
+      // authenticate with your backend server, if you have one. Use
+      // FirebaseUser.getIdToken() instead.
+      String uid = user.uid;
+    }
+  }
   @override
   void initState() {
     loadingController = AnimationController(
