@@ -11,11 +11,12 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   User? user = FirebaseAuth.instance.currentUser;
-  String? get name => user!.displayName.toString();
+  String? get name => user!.displayName?.trim();
   String? get email => user!.email.toString();
+  String?  displayName = FirebaseAuth.instance.currentUser!.displayName;
 
 
-  Future getUserDetails() async {
+  Future getName() async {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
@@ -104,9 +105,12 @@ class _MyDrawerState extends State<MyDrawer> {
 
                             //Text
                           ),
-                          Text(
-                            name!,
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                          Padding(
+                            padding: const EdgeInsets.all(1.0),
+                            child: Text(
+                              displayName!,
+                              style: TextStyle(fontSize: 15, color: Colors.black),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
